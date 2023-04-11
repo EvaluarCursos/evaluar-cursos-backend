@@ -1,21 +1,13 @@
-// package src.main.java.com.udeaevaluarcursos;
-
-// public class Application {
-    
-// }
-
 package com.udeaevaluarcursos;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class Application {
+public class EvaluarCursosBackendApplication {
 
-  public static void main(String[] args) {
-    SpringApplication.run(Application.class, args);
-  }
+	public static void main(String[] args) {
+		SpringApplication.run(EvaluarCursosBackendApplication.class, args);
+	}
 
 }
-
-
