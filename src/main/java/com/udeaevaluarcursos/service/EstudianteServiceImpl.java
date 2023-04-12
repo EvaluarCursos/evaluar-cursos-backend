@@ -1,5 +1,5 @@
 package com.udeaevaluarcursos.service;
 
-public interface EstudianteService {
-    
+public class EstudianteServiceImpl {
+
 }
