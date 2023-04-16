@@ -1,5 +1,9 @@
 package com.udeaevaluarcursos.service;
 
-public class EstudianteServiceImpl {
+import org.springframework.stereotype.Service;
+
+@Service
+public class EstudianteServiceImpl implements EstudianteService {
+
 
 }

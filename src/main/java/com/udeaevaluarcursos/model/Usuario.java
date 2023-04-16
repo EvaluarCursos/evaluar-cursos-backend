@@ -6,4 +6,7 @@ import jakarta.persistence.Id;
 
 public class Usuario {
 
+
+
+
 }
