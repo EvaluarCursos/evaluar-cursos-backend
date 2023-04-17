@@ -1,4 +1,4 @@
-package com.udeaevaluarcursos.model;
+package com.udeaevaluarcursos.models;
 
 public class EvaluacionMateria {
     

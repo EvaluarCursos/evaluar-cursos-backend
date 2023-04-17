@@ -1,4 +1,4 @@
-package com.udeaevaluarcursos.controller;
+package com.udeaevaluarcursos.controllers;
 
 public class EstudianteController {
     
