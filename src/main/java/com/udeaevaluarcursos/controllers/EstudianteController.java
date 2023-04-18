@@ -1,6 +1,6 @@
-package com.udeaevaluarcursos.controller;
+package com.udeaevaluarcursos.controllers;
 
-import com.udeaevaluarcursos.model.Estudiante;
+import com.udeaevaluarcursos.models.Estudiante;
 import com.udeaevaluarcursos.service.EstudianteServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

@@ -1,6 +1,6 @@
 package com.udeaevaluarcursos.repository;
 
-import com.udeaevaluarcursos.model.Materia;
+import com.udeaevaluarcursos.models.Materia;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

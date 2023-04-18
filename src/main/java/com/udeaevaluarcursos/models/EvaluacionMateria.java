@@ -3,14 +3,14 @@ package com.udeaevaluarcursos.models;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
-import com.udeaevaluarcursos.model.Matricula;
+import com.udeaevaluarcursos.models.Matricula;
 @Entity
 @Table(name="evaluacion_materia")
 public class EvaluacionMateria {
 
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    private int id;
+    private int idEvaluacionMateria;
     @Column(name="nota_pregunta_1")
     private int notaUno;
     @Column(name="nota_pregunta_2")
@@ -25,7 +25,6 @@ public class EvaluacionMateria {
 
     @JoinColumn(name = "idMatricula")
     @OneToOne()
-    @JsonManagedReference
     private Matricula idMatricula;
 
     @Column(name="feedback")
@@ -40,12 +39,12 @@ public class EvaluacionMateria {
     }
 
 
-    public int getId() {
-        return id;
+    public int getIdEvaluacionMateria() {
+        return idEvaluacionMateria;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setIdEvaluacionMateria(int id) {
+        this.idEvaluacionMateria = id;
     }
 
 

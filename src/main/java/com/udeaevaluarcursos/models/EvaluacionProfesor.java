@@ -10,7 +10,7 @@ public class EvaluacionProfesor {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private int idEvaluacionProfesor;
 
     @Column(name="nota_pregunta_1")
     private int notaUno;
@@ -44,12 +44,12 @@ public class EvaluacionProfesor {
 
 
 
-    public int getId() {
-        return id;
+    public int getIdEvaluacionProfesor() {
+        return idEvaluacionProfesor;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setIdEvaluacionProfesor(int id) {
+        this.idEvaluacionProfesor = id;
     }
 
     public int getNotaUno() {

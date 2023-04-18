@@ -1,5 +1,5 @@
-package com.udeaevaluarcursos.controller;
-import com.udeaevaluarcursos.model.EvaluacionProfesor;
+package com.udeaevaluarcursos.controllers;
+import com.udeaevaluarcursos.models.EvaluacionProfesor;
 import com.udeaevaluarcursos.service.EvaluacionProfesorServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

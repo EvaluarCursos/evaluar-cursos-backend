@@ -1,7 +1,7 @@
-package com.udeaevaluarcursos.controller;
+package com.udeaevaluarcursos.controllers;
 
 
-import com.udeaevaluarcursos.model.Matricula;
+import com.udeaevaluarcursos.models.Matricula;
 
 import com.udeaevaluarcursos.service.MatriculaServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
