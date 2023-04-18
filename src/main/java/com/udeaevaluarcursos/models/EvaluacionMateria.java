@@ -1,6 +1,5 @@
 package com.udeaevaluarcursos.models;
 
-
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import com.udeaevaluarcursos.models.Matricula;
@@ -108,5 +107,3 @@ public class EvaluacionMateria {
     public EvaluacionMateria(){
 
     };
-
-}

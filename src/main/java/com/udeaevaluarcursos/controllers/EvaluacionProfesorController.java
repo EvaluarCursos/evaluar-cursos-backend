@@ -1,4 +1,5 @@
 package com.udeaevaluarcursos.controllers;
+
 import com.udeaevaluarcursos.models.EvaluacionProfesor;
 import com.udeaevaluarcursos.service.EvaluacionProfesorServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -65,6 +66,4 @@ public class EvaluacionProfesorController {
         }
     }
 }
-
-
 

@@ -57,6 +57,3 @@ public class EvaluacionMateriaController {
             return new ResponseEntity<>(evaluacionMateria, HttpStatus.BAD_REQUEST);
         }
     }
-
-
-}

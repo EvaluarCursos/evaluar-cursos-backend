@@ -1,4 +1,5 @@
 package com.udeaevaluarcursos.models;
+
 import com.udeaevaluarcursos.models.Profesor;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
@@ -114,5 +115,3 @@ public class TotalProfesor {
     public TotalProfesor(){
 
     }
-
-}

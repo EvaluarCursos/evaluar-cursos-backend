@@ -1,6 +1,5 @@
 package com.udeaevaluarcursos.controllers;
 
-
 import com.udeaevaluarcursos.models.Profesor;
 
 import com.udeaevaluarcursos.service.ProfesorServiceImpl;
@@ -75,4 +74,4 @@ public class ProfesorController {
             return new ResponseEntity<>(profesorActualizado, HttpStatus.BAD_REQUEST);
         }
     }
-}
+

@@ -9,9 +9,5 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 
 public class UsuarioController {
-    @RequestMapping(value = "/username", method = RequestMethod.GET)
-    @ResponseBody
-    public String currentUserName(Principal principal) {
-        return principal.getName();
-    }
+
 }

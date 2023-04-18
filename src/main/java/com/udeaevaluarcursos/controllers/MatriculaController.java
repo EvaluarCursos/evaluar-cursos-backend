@@ -1,6 +1,5 @@
 package com.udeaevaluarcursos.controllers;
 
-
 import com.udeaevaluarcursos.models.Matricula;
 
 import com.udeaevaluarcursos.service.MatriculaServiceImpl;
@@ -71,4 +70,3 @@ public class MatriculaController {
             return new ResponseEntity<>(matriculaActualizada, HttpStatus.BAD_REQUEST);
         }
     }
-}

@@ -1,6 +1,5 @@
 package com.udeaevaluarcursos.controllers;
 
-
 import com.udeaevaluarcursos.models.Materia;
 import com.udeaevaluarcursos.service.MateriaServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -72,4 +71,3 @@ public class MateriaController {
             return new ResponseEntity<>(materiaActualizada, HttpStatus.BAD_REQUEST);
         }
     }
-}
