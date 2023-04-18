@@ -1,26 +1,45 @@
 version: '3.3'
 services:
+  evaluar-cursos-backend:
+    image: evaluar-cursos-backend
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    command: ./mvnw spring-boot:run
+    ports:
+      - 8080:8080
+    environment:
+      - SPRING_DATASOURCE_PASSWORD=1234
+      - SPRING_DATASOURCE_USER=user
+      - SPRING_DATASOURCE_URL=jdbc:mysql://db:3306/db
+    depends_on:
+      - db
+    networks:
+      - evaluar-cursos
+
   db:
     image: mysql
     restart: always
     environment:
-      MYSQL_DATABASE: 'db'
+      - MYSQL_DATABASE=db
       # So you don't have to use root, but you can if you like
-      MYSQL_USER: 'user'
+      - MYSQL_USER=user
       # You can use whatever password you like
-      MYSQL_PASSWORD: '1234'
+      - MYSQL_PASSWORD=1234
       # Password for root access
-      MYSQL_ROOT_PASSWORD: '1234'
+      - MYSQL_ROOT_PASSWORD=1234
     ports:
       # <Port exposed> : <MySQL Port running inside container>
-      - '3305:3306'
+      - 3305:3306
     expose:
       # Opens port 3306 on the container
-      - '3306'
+      - 3306
       # Where our data will be persisted
     volumes:
       - my-db:/var/lib/mysql
-  # Names our volume
+    networks:
+      - evaluar-cursos
+
 volumes:
   my-db:
     external: true
@@ -28,3 +47,5 @@ volumes:
 networks:
   evaluar-cursos:
     external : true
+
+    #`docker network create evaluar-cursos

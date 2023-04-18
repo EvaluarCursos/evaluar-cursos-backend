@@ -1,16 +1,17 @@
-package com.udeaevaluarcursos.model;
+package com.udeaevaluarcursos.models;
 
-
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
-import com.udeaevaluarcursos.model.Matricula;
+
 @Entity
-@Table(name="evaluacion_materia")
-public class EvaluacionMateria {
+@Table(name="evaluacion_profesor")
+public class EvaluacionProfesor {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
     @Column(name="nota_pregunta_1")
     private int notaUno;
     @Column(name="nota_pregunta_2")
@@ -31,6 +32,8 @@ public class EvaluacionMateria {
     @Column(name="feedback")
     private String feedback;
 
+
+
     public String getFeedback() {
         return feedback;
     }
@@ -38,6 +41,7 @@ public class EvaluacionMateria {
     public void setFeedback(String feedback) {
         this.feedback = feedback;
     }
+
 
 
     public int getId() {
@@ -48,7 +52,13 @@ public class EvaluacionMateria {
         this.id = id;
     }
 
+    public int getNotaUno() {
+        return notaUno;
+    }
 
+    public void setNotaUno(int notaUno) {
+        this.notaUno = notaUno;
+    }
 
     public int getNotaDos() {
         return notaDos;
@@ -58,8 +68,6 @@ public class EvaluacionMateria {
         this.notaDos = notaDos;
     }
 
-
-
     public int getNotaTres() {
         return notaTres;
     }
@@ -67,8 +75,6 @@ public class EvaluacionMateria {
     public void setNotaTres(int notaTres) {
         this.notaTres = notaTres;
     }
-
-
 
     public int getNotaCuatro() {
         return notaCuatro;
@@ -78,8 +84,6 @@ public class EvaluacionMateria {
         this.notaCuatro = notaCuatro;
     }
 
-
-
     public int getNotaCinco() {
         return notaCinco;
     }
@@ -87,16 +91,6 @@ public class EvaluacionMateria {
     public void setNotaCinco(int notaCinco) {
         this.notaCinco = notaCinco;
     }
-
-    public int getNotaUno() {
-        return notaUno;
-    }
-
-    public void setNotaUno(int notaUno) {
-        this.notaUno = notaUno;
-    }
-
-
 
     public Matricula getIdMatricula() {
         return idMatricula;
@@ -106,8 +100,10 @@ public class EvaluacionMateria {
         this.idMatricula = idMatricula;
     }
 
-    public EvaluacionMateria(){
 
-    };
+    public EvaluacionProfesor(){
+
+    }
+
 
 }
