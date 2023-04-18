@@ -1,5 +1,5 @@
 package com.udeaevaluarcursos.service;
 
-public class TotalMateriaService {
+public interface TotalMateriaService {
     
 }
