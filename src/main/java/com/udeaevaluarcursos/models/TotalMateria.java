@@ -19,22 +19,18 @@ public class TotalMateria {
     private Materia idMateria;
 
 
-
-
-
-    @Column(name="semestre")
+    @Column(name = "semestre")
     private int semestre;
-    @Column(name="promedio_nota_1")
+    @Column(name = "promedio_nota_1")
     private int promedioNotaUno;
-    @Column(name="promedio_nota_2")
+    @Column(name = "promedio_nota_2")
     private int promedioNotaDos;
-    @Column(name="promedio_nota_3")
+    @Column(name = "promedio_nota_3")
     private int promedioNotaTres;
-    @Column(name="promedio_nota_4")
+    @Column(name = "promedio_nota_4")
     private int promedioNotaCuatro;
-    @Column(name="promedio_nota_5")
+    @Column(name = "promedio_nota_5")
     private int promedioNotaCinco;
-
 
 
     public int getIdTotalMateria() {
@@ -102,7 +98,7 @@ public class TotalMateria {
     }
 
 
-
-    public TotalMateria(){
+    public TotalMateria() {
 
     }
+}

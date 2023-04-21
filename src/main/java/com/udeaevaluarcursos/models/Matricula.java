@@ -28,10 +28,10 @@ public class Matricula {
     private Profesor idProfesor;
 
 
-    @Column(name="semestre")
+    @Column(name = "semestre")
     private int semestre;
 
-    @Column(name="calificado")
+    @Column(name = "calificado")
     private int calificado;
 
     public int getCalificado() {
@@ -54,7 +54,9 @@ public class Matricula {
         return idEstudiante;
     }
 
-    public void setIdEstudiante(Estudiante idEstudiante) {this.idEstudiante = idEstudiante;}
+    public void setIdEstudiante(Estudiante idEstudiante) {
+        this.idEstudiante = idEstudiante;
+    }
 
     public Materia getIdMateria() {
         return idMateria;
@@ -81,8 +83,8 @@ public class Matricula {
     }
 
 
-
-
-    public Matricula(){
+    public Matricula() {
 
     }
+
+}

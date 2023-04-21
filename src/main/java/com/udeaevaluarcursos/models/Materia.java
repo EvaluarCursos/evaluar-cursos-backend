@@ -17,6 +17,7 @@ public class Materia {
         this.idMateria = idMateria;
     }
 
-    public Materia(){
+    public Materia() {
 
     }
+}

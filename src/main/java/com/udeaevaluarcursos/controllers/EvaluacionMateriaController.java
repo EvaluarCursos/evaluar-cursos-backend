@@ -1,7 +1,6 @@
 package com.udeaevaluarcursos.controllers;
 
 import com.udeaevaluarcursos.models.EvaluacionMateria;
-import com.udeaevaluarcursos.models.Materia;
 import com.udeaevaluarcursos.service.EvaluacionMateriaServiceImpl;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,41 +18,42 @@ public class EvaluacionMateriaController {
     EvaluacionMateriaServiceImpl evaluacionMateriaServiceImpl;
 
     @PostMapping("/create-evaluacion-materia")
-    public ResponseEntity<EvaluacionMateria> createEvaluacionMateria(@RequestBody EvaluacionMateria evaluacionMateria){
+    public ResponseEntity<EvaluacionMateria> createEvaluacionMateria(@RequestBody EvaluacionMateria evaluacionMateria) {
 
-        EvaluacionMateria evaluacionMateriaCreada=evaluacionMateriaServiceImpl.createEvaluacionMateria(evaluacionMateria);
+        EvaluacionMateria evaluacionMateriaCreada = evaluacionMateriaServiceImpl.createEvaluacionMateria(evaluacionMateria);
 
-        if(evaluacionMateriaCreada != null){
+        if (evaluacionMateriaCreada != null) {
             return new ResponseEntity<>(evaluacionMateriaCreada, HttpStatus.OK);
-        }else{
+        } else {
             return new ResponseEntity<>(evaluacionMateriaCreada, HttpStatus.BAD_REQUEST);
         }
     }
 
     @GetMapping("/list-evaluaciones-materias")
-    public ResponseEntity<List<EvaluacionMateria>> listMaterias(){
-        return new ResponseEntity<>(evaluacionMateriaServiceImpl.listEvaluacionesMaterias(),HttpStatus.OK);
+    public ResponseEntity<List<EvaluacionMateria>> listMaterias() {
+        return new ResponseEntity<>(evaluacionMateriaServiceImpl.listEvaluacionesMaterias(), HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<EvaluacionMateria> getEvaluacionMateriaById(@PathVariable("id") int id ){
+    public ResponseEntity<EvaluacionMateria> getEvaluacionMateriaById(@PathVariable("id") int id) {
 
-        EvaluacionMateria evaluacionMateria=evaluacionMateriaServiceImpl.getEvaluacionMateriaById(id);
+        EvaluacionMateria evaluacionMateria = evaluacionMateriaServiceImpl.getEvaluacionMateriaById(id);
 
-        if(evaluacionMateria != null){
+        if (evaluacionMateria != null) {
             return new ResponseEntity<>(evaluacionMateria, HttpStatus.OK);
-        }else{
+        } else {
             return new ResponseEntity<>(evaluacionMateria, HttpStatus.BAD_REQUEST);
         }
     }
 
     @DeleteMapping("/delete-evaluacion-materia/{id}")
-    public ResponseEntity<EvaluacionMateria> deleteEvaluacionMateria(@PathVariable("id") int id){
-        EvaluacionMateria evaluacionMateria=evaluacionMateriaServiceImpl.deleteEvaluacionMateria(id);
+    public ResponseEntity<EvaluacionMateria> deleteEvaluacionMateria(@PathVariable("id") int id) {
+        EvaluacionMateria evaluacionMateria = evaluacionMateriaServiceImpl.deleteEvaluacionMateria(id);
 
-        if(evaluacionMateria != null){
+        if (evaluacionMateria != null) {
             return new ResponseEntity<>(evaluacionMateria, HttpStatus.OK);
-        }else{
+        } else {
             return new ResponseEntity<>(evaluacionMateria, HttpStatus.BAD_REQUEST);
         }
     }
+}

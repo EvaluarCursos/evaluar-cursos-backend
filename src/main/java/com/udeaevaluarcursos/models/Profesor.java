@@ -10,7 +10,7 @@ public class Profesor {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idProfesor;
 
-    @Column(name="cedula")
+    @Column(name = "cedula")
     private int cedula;
 
     public int getCedula() {
@@ -30,7 +30,8 @@ public class Profesor {
     }
 
 
-    public Profesor(){
+    public Profesor() {
 
     }
+}
 

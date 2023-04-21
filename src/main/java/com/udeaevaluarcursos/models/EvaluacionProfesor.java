@@ -12,15 +12,15 @@ public class EvaluacionProfesor {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idEvaluacionProfesor;
 
-    @Column(name="nota_pregunta_1")
+    @Column(name = "nota_pregunta_1")
     private int notaUno;
-    @Column(name="nota_pregunta_2")
+    @Column(name = "nota_pregunta_2")
     private int notaDos;
-    @Column(name="nota_pregunta_3")
+    @Column(name = "nota_pregunta_3")
     private int notaTres;
-    @Column(name="nota_pregunta_4")
+    @Column(name = "nota_pregunta_4")
     private int notaCuatro;
-    @Column(name="nota_pregunta_5")
+    @Column(name = "nota_pregunta_5")
     private int notaCinco;
 
 
@@ -29,9 +29,8 @@ public class EvaluacionProfesor {
     @JsonManagedReference
     private Matricula idMatricula;
 
-    @Column(name="feedback")
+    @Column(name = "feedback")
     private String feedback;
-
 
 
     public String getFeedback() {
@@ -41,7 +40,6 @@ public class EvaluacionProfesor {
     public void setFeedback(String feedback) {
         this.feedback = feedback;
     }
-
 
 
     public int getIdEvaluacionProfesor() {
@@ -101,6 +99,7 @@ public class EvaluacionProfesor {
     }
 
 
-    public EvaluacionProfesor(){
+    public EvaluacionProfesor() {
 
     }
+}
