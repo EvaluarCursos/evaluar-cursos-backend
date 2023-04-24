@@ -25,13 +25,6 @@ jobs:
         server-id: github # Value of the distributionManagement/repository/id field of the pom.xml
         settings-path: ${{ github.workspace }} # location for the settings.xml file
 
-    - name: Build and analyze 1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-      run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=EvaluarCursos_evaluar-cursos-backend -Dsonar.login=$SONAR_TOKEN
-
-
 
     - name: Build with Maven
       run: mvn -B package --file pom.xml

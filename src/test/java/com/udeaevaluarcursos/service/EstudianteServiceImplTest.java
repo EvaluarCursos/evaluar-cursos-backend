@@ -9,6 +9,7 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
 import java.util.Arrays;
+import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
@@ -38,8 +39,30 @@ class EstudianteServiceImplTest {
         assertNotNull(estudianteService.listEstudiantes());
     }
 
+
+    @Test
+    void createEstudiante() {
+        assertNotNull(estudianteService.createEstudiante(estudiante));
+    }
+
     @Test
     void getEstudianteByCedula() {
+        when(estudianteRepository.findByCedula(estudiante.getCedula())).thenReturn(Optional.ofNullable(estudiante));
+        assertNotNull(estudianteService.getEstudianteByCedula(estudiante.getCedula()));
+
+    }
+
+    @Test
+    void deleteEstudiante() {
+        when(estudianteRepository.findByCedula(estudiante.getCedula())).thenReturn(Optional.ofNullable(estudiante));
+        assertNotNull(estudianteService.deleteEstudiante(estudiante.getCedula()));
+
+    }
+
+    @Test
+    void updateEstudiante() {
+        when(estudianteRepository.findById(estudiante.getIdEstudiante())).thenReturn(Optional.ofNullable(estudiante));
+        assertNotNull(estudianteService.updateEstudiante(estudiante));
 
     }
 }
