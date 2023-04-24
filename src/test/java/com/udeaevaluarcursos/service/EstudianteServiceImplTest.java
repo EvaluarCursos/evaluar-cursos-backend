@@ -2,6 +2,7 @@ package com.udeaevaluarcursos.service;
 
 import com.udeaevaluarcursos.models.Estudiante;
 import com.udeaevaluarcursos.repository.EstudianteRepository;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -16,6 +17,7 @@ import static org.mockito.Mockito.when;
 
 class EstudianteServiceImplTest {
 
+    AutoCloseable openMocks;
     @Mock
     private EstudianteRepository estudianteRepository;
     @InjectMocks
@@ -24,7 +26,7 @@ class EstudianteServiceImplTest {
     private Estudiante estudiante;
     @BeforeEach
     void setUp() {
-        MockitoAnnotations.initMocks(this);
+        openMocks = MockitoAnnotations.openMocks(this);
 
         estudiante = new Estudiante();
 
@@ -64,5 +66,10 @@ class EstudianteServiceImplTest {
         when(estudianteRepository.findById(estudiante.getIdEstudiante())).thenReturn(Optional.ofNullable(estudiante));
         assertNotNull(estudianteService.updateEstudiante(estudiante));
 
+    }
+
+    @AfterEach
+    void tearDown() throws Exception{
+        openMocks.close();
     }
 }
