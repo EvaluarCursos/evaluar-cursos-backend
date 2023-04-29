@@ -10,6 +10,7 @@ import java.util.Optional;
 public interface EstudianteRepository extends JpaRepository<Estudiante,Integer>{
 
     Optional<Estudiante> findByCedula(int cedula);
+    Optional<Estudiante> getById(int idEstudiante);
 
     Optional<Estudiante> deleteByCedula(int cedula);
 }

@@ -6,10 +6,10 @@ import jakarta.persistence.*;
 @Table(name="estudiante")
 public class Estudiante {
     @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
-    private int idEstudiante ;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int idEstudiante;
 
-    @Column(name="cedula")
+    @Column(name = "cedula")
     private int cedula;
 
     public int getCedula() {
@@ -28,6 +28,7 @@ public class Estudiante {
         this.idEstudiante = id;
     }
 
-    public Estudiante(){
+    public Estudiante() {
 
     }
+}

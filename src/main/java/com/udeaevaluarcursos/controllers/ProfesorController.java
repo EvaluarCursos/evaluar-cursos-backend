@@ -6,18 +6,16 @@ import com.udeaevaluarcursos.service.ProfesorServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
+import com.udeaevaluarcursos.params.response.CoursesPerTeacher;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@Controller
+@RestController
 @RequestMapping("/profesor")
 public class ProfesorController {
     @Autowired
     ProfesorServiceImpl profesorServiceImpl;
-
-
     @PostMapping("/create-profesor")
     public ResponseEntity<Profesor> createProfesor(@RequestBody Profesor profesor) {
 

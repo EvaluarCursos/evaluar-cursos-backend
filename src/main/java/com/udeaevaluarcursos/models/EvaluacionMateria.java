@@ -8,17 +8,17 @@ import com.udeaevaluarcursos.models.Matricula;
 public class EvaluacionMateria {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idEvaluacionMateria;
-    @Column(name="nota_pregunta_1")
+    @Column(name = "nota_pregunta_1")
     private int notaUno;
-    @Column(name="nota_pregunta_2")
+    @Column(name = "nota_pregunta_2")
     private int notaDos;
-    @Column(name="nota_pregunta_3")
+    @Column(name = "nota_pregunta_3")
     private int notaTres;
-    @Column(name="nota_pregunta_4")
+    @Column(name = "nota_pregunta_4")
     private int notaCuatro;
-    @Column(name="nota_pregunta_5")
+    @Column(name = "nota_pregunta_5")
     private int notaCinco;
 
 
@@ -26,7 +26,7 @@ public class EvaluacionMateria {
     @OneToOne()
     private Matricula idMatricula;
 
-    @Column(name="feedback")
+    @Column(name = "feedback")
     private String feedback;
 
     public String getFeedback() {
@@ -47,7 +47,6 @@ public class EvaluacionMateria {
     }
 
 
-
     public int getNotaDos() {
         return notaDos;
     }
@@ -55,7 +54,6 @@ public class EvaluacionMateria {
     public void setNotaDos(int notaDos) {
         this.notaDos = notaDos;
     }
-
 
 
     public int getNotaTres() {
@@ -67,7 +65,6 @@ public class EvaluacionMateria {
     }
 
 
-
     public int getNotaCuatro() {
         return notaCuatro;
     }
@@ -75,7 +72,6 @@ public class EvaluacionMateria {
     public void setNotaCuatro(int notaCuatro) {
         this.notaCuatro = notaCuatro;
     }
-
 
 
     public int getNotaCinco() {
@@ -95,7 +91,6 @@ public class EvaluacionMateria {
     }
 
 
-
     public Matricula getIdMatricula() {
         return idMatricula;
     }
@@ -104,6 +99,7 @@ public class EvaluacionMateria {
         this.idMatricula = idMatricula;
     }
 
-    public EvaluacionMateria(){
+    public EvaluacionMateria() {
 
-    };
+    }
+}
