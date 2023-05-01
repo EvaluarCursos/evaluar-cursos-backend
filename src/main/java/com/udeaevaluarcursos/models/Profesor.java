@@ -16,6 +16,18 @@ public class Profesor {
     @Column(name = "nombre")
     private String nombre;
 
+    @JoinColumn(name = "idUsuario")
+    @OneToOne()
+    private Usuario idUsuario;
+
+    public void setIdUsuario(Usuario idUsuario) {
+        this.idUsuario = idUsuario;
+    }
+
+    public Usuario getIdUsuario() {
+        return idUsuario;
+    }
+
     public String getNombre() {
         return nombre;
     }

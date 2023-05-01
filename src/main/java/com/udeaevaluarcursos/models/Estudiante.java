@@ -12,6 +12,18 @@ public class Estudiante {
     @Column(name = "cedula")
     private int cedula;
 
+    @JoinColumn(name = "idUsuario")
+    @OneToOne()
+    private Usuario idUsuario;
+
+    public void setIdUsuario(Usuario idUsuario) {
+        this.idUsuario = idUsuario;
+    }
+
+    public Usuario getIdUsuario() {
+        return idUsuario;
+    }
+
     public int getCedula() {
         return cedula;
     }

@@ -1,8 +1,5 @@
 package com.udeaevaluarcursos.models;
 
-import com.udeaevaluarcursos.models.Profesor;
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 @Entity
@@ -13,7 +10,6 @@ public class Matricula {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idMatricula;
 
-
     @JoinColumn(name = "idEstudiante")
     @ManyToOne()
     private Estudiante idEstudiante;
@@ -22,11 +18,9 @@ public class Matricula {
     @ManyToOne()
     private Materia idMateria;
 
-
     @JoinColumn(name = "idProfesor")
     @ManyToOne()
     private Profesor idProfesor;
-
 
     @Column(name = "semestre", length = 10)
     private String semestre;
