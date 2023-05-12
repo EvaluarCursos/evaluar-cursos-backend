@@ -61,6 +61,7 @@ public class ProfesorServiceImpl implements ProfesorService {
         Profesor profesorActualizado= profesorActualizar.get();
 
         profesorActualizado.setCedula(profesor.getCedula());
+        profesorActualizado.setNombre(profesor.getNombre());
         profesorRepository.save(profesorActualizado);
 
 

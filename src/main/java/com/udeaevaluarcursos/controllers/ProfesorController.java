@@ -74,4 +74,4 @@ public class ProfesorController {
             return new ResponseEntity<>(profesorActualizado, HttpStatus.BAD_REQUEST);
         }
     }
-
+}

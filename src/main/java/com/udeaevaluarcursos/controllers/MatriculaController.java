@@ -70,3 +70,4 @@ public class MatriculaController {
             return new ResponseEntity<>(matriculaActualizada, HttpStatus.BAD_REQUEST);
         }
     }
+}

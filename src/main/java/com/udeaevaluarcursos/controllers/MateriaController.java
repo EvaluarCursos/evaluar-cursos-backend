@@ -71,3 +71,4 @@ public class MateriaController {
             return new ResponseEntity<>(materiaActualizada, HttpStatus.BAD_REQUEST);
         }
     }
+}

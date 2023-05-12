@@ -8,18 +8,24 @@ import com.udeaevaluarcursos.models.Matricula;
 public class EvaluacionMateria {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idEvaluacionMateria;
-    @Column(name="nota_pregunta_1")
+    @Column(name = "nota_pregunta_1")
     private int notaUno;
-    @Column(name="nota_pregunta_2")
+    @Column(name = "nota_pregunta_2")
     private int notaDos;
-    @Column(name="nota_pregunta_3")
+    @Column(name = "nota_pregunta_3")
     private int notaTres;
-    @Column(name="nota_pregunta_4")
-    private int notaCuatro;
-    @Column(name="nota_pregunta_5")
-    private int notaCinco;
+
+
+    @OneToOne
+    private Profesor idProfesor;
+
+
+
+
+    @OneToOne
+    private Materia idMateria;
 
 
     @JoinColumn(name = "idMatricula")
@@ -67,25 +73,6 @@ public class EvaluacionMateria {
     }
 
 
-
-    public int getNotaCuatro() {
-        return notaCuatro;
-    }
-
-    public void setNotaCuatro(int notaCuatro) {
-        this.notaCuatro = notaCuatro;
-    }
-
-
-
-    public int getNotaCinco() {
-        return notaCinco;
-    }
-
-    public void setNotaCinco(int notaCinco) {
-        this.notaCinco = notaCinco;
-    }
-
     public int getNotaUno() {
         return notaUno;
     }
@@ -104,6 +91,21 @@ public class EvaluacionMateria {
         this.idMatricula = idMatricula;
     }
 
+    public Profesor getIdProfesor() {
+        return idProfesor;
+    }
+
+    public void setIdProfesor(Profesor idProfesor) {
+        this.idProfesor = idProfesor;
+    }
+
+    public Materia getIdMateria() {
+        return idMateria;
+    }
+
+    public void setIdMateria(Materia idMateria) {
+        this.idMateria = idMateria;
+    }
     public EvaluacionMateria(){
 
-    };
+    } }

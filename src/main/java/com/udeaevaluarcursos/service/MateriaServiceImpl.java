@@ -66,7 +66,9 @@ public class MateriaServiceImpl implements MateriaService{
             return null;
         }
 
-        materiaRepository.save(materiaActualizar.get());
+        Materia materiaActualizada= materiaActualizar.get();
+        materiaActualizada.setNombreMateria(materia.getNombreMateria());
+        materiaRepository.save(materiaActualizada);
 
 
         return materiaActualizar.get();

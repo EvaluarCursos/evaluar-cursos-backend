@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table(name="evaluacion_profesor")
 public class EvaluacionProfesor {
@@ -11,6 +13,24 @@ public class EvaluacionProfesor {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idEvaluacionProfesor;
+
+    @OneToOne ()
+    private Profesor idProfesor;
+
+
+
+    @OneToOne
+    private Materia idMateria;
+
+
+
+    public Materia getIdMateria() {
+        return idMateria;
+    }
+
+    public void setIdMateria(Materia idMateria) {
+        this.idMateria = idMateria;
+    }
 
     @Column(name="nota_pregunta_1")
     private int notaUno;
@@ -23,10 +43,30 @@ public class EvaluacionProfesor {
     @Column(name="nota_pregunta_5")
     private int notaCinco;
 
+    @Column(name="nota_pregunta_6")
+    private int notaSeis;
 
-    @JoinColumn(name = "idMatricula")
+    @Column(name="nota_pregunta_7")
+    private int notaSiete;
+
+    public int getNotaSeis() {
+        return notaSeis;
+    }
+
+    public void setNotaSeis(int notaSeis) {
+        this.notaSeis = notaSeis;
+    }
+
+    public int getNotaSiete() {
+        return notaSiete;
+    }
+
+    public void setNotaSiete(int notaSiete) {
+        this.notaSiete = notaSiete;
+    }
+
+
     @OneToOne()
-    @JsonManagedReference
     private Matricula idMatricula;
 
     @Column(name="feedback")
@@ -100,7 +140,13 @@ public class EvaluacionProfesor {
         this.idMatricula = idMatricula;
     }
 
+    public Profesor getIdProfesor() {
+        return idProfesor;
+    }
 
+    public void setIdProfesor(Profesor idProfesor) {
+        this.idProfesor = idProfesor;
+    }
     public EvaluacionProfesor(){
 
-    }
+    } }

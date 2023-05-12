@@ -2,6 +2,7 @@ package com.udeaevaluarcursos.service;
 
 import com.udeaevaluarcursos.models.EvaluacionMateria;
 import com.udeaevaluarcursos.models.EvaluacionProfesor;
+import com.udeaevaluarcursos.models.PreguntasEvaluaciones;
 
 import java.util.List;
 import java.util.Optional;

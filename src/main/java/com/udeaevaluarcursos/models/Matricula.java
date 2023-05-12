@@ -5,6 +5,8 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table(name="matricula")
 public class Matricula {
@@ -14,18 +16,18 @@ public class Matricula {
     private int idMatricula;
 
 
-    @JoinColumn(name = "idEstudiante")
+
     @ManyToOne()
     private Estudiante idEstudiante;
 
-    @JoinColumn(name = "idMateria")
-    @ManyToOne()
-    private Materia idMateria;
+
+    @ManyToMany ()
+    private List<Materia> idMateria;
 
 
-    @JoinColumn(name = "idProfesor")
-    @ManyToOne()
-    private Profesor idProfesor;
+
+    @ManyToMany ()
+    private List<Profesor> idProfesor;
 
 
     @Column(name="semestre")
@@ -56,19 +58,19 @@ public class Matricula {
 
     public void setIdEstudiante(Estudiante idEstudiante) {this.idEstudiante = idEstudiante;}
 
-    public Materia getIdMateria() {
+    public List<Materia> getIdMateria() {
         return idMateria;
     }
 
-    public void setIdMateria(Materia idMateria) {
+    public void setIdMateria(List<Materia> idMateria) {
         this.idMateria = idMateria;
     }
 
-    public Profesor getIdProfesor() {
+    public List<Profesor> getIdProfesor() {
         return idProfesor;
     }
 
-    public void setIdProfesor(Profesor idProfesor) {
+    public void setIdProfesor(List<Profesor> idProfesor) {
         this.idProfesor = idProfesor;
     }
 
@@ -85,4 +87,4 @@ public class Matricula {
 
     public Matricula(){
 
-    }
+    } }

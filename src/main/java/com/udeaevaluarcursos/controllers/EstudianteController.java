@@ -73,4 +73,4 @@ public class EstudianteController {
             return new ResponseEntity<>(estudianteActualizado, HttpStatus.BAD_REQUEST);
         }
     }
-
+}

@@ -1,7 +1,9 @@
 package com.udeaevaluarcursos.controllers;
 
 import com.udeaevaluarcursos.models.EvaluacionMateria;
+import com.udeaevaluarcursos.models.EvaluationResponse;
 import com.udeaevaluarcursos.models.Materia;
+import com.udeaevaluarcursos.models.PreguntasEvaluaciones;
 import com.udeaevaluarcursos.service.EvaluacionMateriaServiceImpl;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -57,3 +59,15 @@ public class EvaluacionMateriaController {
             return new ResponseEntity<>(evaluacionMateria, HttpStatus.BAD_REQUEST);
         }
     }
+
+    @GetMapping("/informe-materia/{idProfesor}/{idMateria}")
+    public ResponseEntity< EvaluationResponse> getInformeByIdMateria(@PathVariable("idProfesor") int idProfesor , @PathVariable("idMateria") int idMateria){
+
+        EvaluationResponse evaluacionMateria=evaluacionMateriaServiceImpl.getInformeByIdMateria(idProfesor,idMateria);
+
+
+        return new ResponseEntity<>(evaluacionMateria, HttpStatus.OK);
+
+
+    }
+}
