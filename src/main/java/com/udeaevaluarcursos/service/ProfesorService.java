@@ -11,4 +11,6 @@ public interface ProfesorService {
     public Profesor deleteProfesor(int cedula);
 
     public Profesor updateProfesor(Profesor profesor);
+
+    public int getCedulaByUserId(int idUsuario);
 }

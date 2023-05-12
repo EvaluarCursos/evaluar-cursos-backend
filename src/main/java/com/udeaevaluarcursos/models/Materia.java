@@ -9,8 +9,7 @@ public class Materia {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idMateria;
 
-
-    @Column(name="nombre_materia")
+    @Column(name = "nombre_materia")
     private String nombreMateria;
 
     public String getNombreMateria() {
@@ -21,6 +20,28 @@ public class Materia {
         this.nombreMateria = nombreMateria;
     }
 
+    @Column(name = "nombre")
+    private String nombre;
+
+    @Column(name = "code")
+    private String code;
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
     public int getIdMateria() {
         return idMateria;
     }
@@ -29,9 +50,7 @@ public class Materia {
         this.idMateria = idMateria;
     }
 
-    public Materia(){
+    public Materia() {
 
     }
-
-
 }

@@ -3,18 +3,30 @@ package com.udeaevaluarcursos.models;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name="profesor")
+@Table(name = "profesor")
 public class Profesor {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idProfesor;
 
-    @Column(name="cedula")
+    @Column(name = "cedula")
     private int cedula;
 
-    @Column(name="nombre")
+    @Column(name = "nombre")
     private String nombre;
+
+    @JoinColumn(name = "idUsuario")
+    @OneToOne()
+    private Usuario idUsuario;
+
+    public void setIdUsuario(Usuario idUsuario) {
+        this.idUsuario = idUsuario;
+    }
+
+    public Usuario getIdUsuario() {
+        return idUsuario;
+    }
 
     public String getNombre() {
         return nombre;
@@ -40,8 +52,7 @@ public class Profesor {
         this.idProfesor = idProfesor;
     }
 
+    public Profesor() {
 
-    public Profesor(){
-
-    } }
-
+    }
+}

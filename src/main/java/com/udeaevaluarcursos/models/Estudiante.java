@@ -2,28 +2,29 @@ package com.udeaevaluarcursos.models;
 
 import jakarta.persistence.*;
 
-import java.util.List;
 
 
 @Entity
 @Table(name="estudiante")
 public class Estudiante {
     @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
-    private int idEstudiante ;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int idEstudiante;
 
-    @Column(name="cedula")
+    @Column(name = "cedula")
     private int cedula;
 
-    /* @Column(name="courses")
-    @OneToMany()
-    @JoinTable(
-            name="Materia",
-            joinColumns = @JoinColumn( name="idEstudiante"),
-    inverseJoinColumns = @JoinColumn( name="idMateria")
-        )
-    private List<Materia> courses;
-    */
+    @JoinColumn(name = "idUsuario")
+    @OneToOne()
+    private Usuario idUsuario;
+
+    public void setIdUsuario(Usuario idUsuario) {
+        this.idUsuario = idUsuario;
+    }
+
+    public Usuario getIdUsuario() {
+        return idUsuario;
+    }
 
     public int getCedula() {
         return cedula;
@@ -41,6 +42,7 @@ public class Estudiante {
         this.idEstudiante = id;
     }
 
-    public Estudiante(){
+    public Estudiante() {
 
-    } }
+    }
+}

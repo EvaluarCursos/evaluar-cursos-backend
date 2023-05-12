@@ -6,7 +6,7 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name="total_profesor")
+@Table(name = "total_profesor")
 public class TotalProfesor {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,22 +22,18 @@ public class TotalProfesor {
     @JsonBackReference
     private Profesor idProfesor;
 
-
-
-
-    @Column(name="semestre")
+    @Column(name = "semestre")
     private int semestre;
-    @Column(name="promedio_nota_1")
+    @Column(name = "promedio_nota_1")
     private int promedioNotaUno;
-    @Column(name="promedio_nota_2")
+    @Column(name = "promedio_nota_2")
     private int promedioNotaDos;
-    @Column(name="promedio_nota_3")
+    @Column(name = "promedio_nota_3")
     private int promedioNotaTres;
-    @Column(name="promedio_nota_4")
+    @Column(name = "promedio_nota_4")
     private int promedioNotaCuatro;
-    @Column(name="promedio_nota_5")
+    @Column(name = "promedio_nota_5")
     private int promedioNotaCinco;
-
 
     public int getIdTotalProfesor() {
         return idTotalProfesor;
@@ -111,8 +107,7 @@ public class TotalProfesor {
         this.promedioNotaCinco = promedioNotaCinco;
     }
 
-
-    public TotalProfesor(){
+    public TotalProfesor() {
 
     }
 }

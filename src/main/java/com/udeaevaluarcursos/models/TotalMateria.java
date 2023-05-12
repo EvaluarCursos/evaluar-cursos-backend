@@ -5,37 +5,30 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name="total_materia")
+@Table(name = "total_materia")
 public class TotalMateria {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idTotalMateria;
 
-
     @JoinColumn(name = "idMateria")
     @ManyToOne()
     @JsonBackReference
     private Materia idMateria;
 
-
-
-
-
-    @Column(name="semestre")
+    @Column(name = "semestre")
     private int semestre;
-    @Column(name="promedio_nota_1")
+    @Column(name = "promedio_nota_1")
     private int promedioNotaUno;
-    @Column(name="promedio_nota_2")
+    @Column(name = "promedio_nota_2")
     private int promedioNotaDos;
-    @Column(name="promedio_nota_3")
+    @Column(name = "promedio_nota_3")
     private int promedioNotaTres;
-    @Column(name="promedio_nota_4")
+    @Column(name = "promedio_nota_4")
     private int promedioNotaCuatro;
-    @Column(name="promedio_nota_5")
+    @Column(name = "promedio_nota_5")
     private int promedioNotaCinco;
-
-
 
     public int getIdTotalMateria() {
         return idTotalMateria;
@@ -101,8 +94,7 @@ public class TotalMateria {
         this.promedioNotaCinco = promedioNotaCinco;
     }
 
+    public TotalMateria() {
 
-
-    public TotalMateria(){
-
-    } }
+    }
+}

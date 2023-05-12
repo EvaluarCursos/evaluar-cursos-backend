@@ -7,22 +7,18 @@ import jakarta.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name="evaluacion_profesor")
+@Table(name = "evaluacion_profesor")
 public class EvaluacionProfesor {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idEvaluacionProfesor;
 
-    @OneToOne ()
+    @OneToOne()
     private Profesor idProfesor;
-
-
 
     @OneToOne
     private Materia idMateria;
-
-
 
     public Materia getIdMateria() {
         return idMateria;
@@ -32,21 +28,21 @@ public class EvaluacionProfesor {
         this.idMateria = idMateria;
     }
 
-    @Column(name="nota_pregunta_1")
+    @Column(name = "nota_pregunta_1")
     private int notaUno;
-    @Column(name="nota_pregunta_2")
+    @Column(name = "nota_pregunta_2")
     private int notaDos;
-    @Column(name="nota_pregunta_3")
+    @Column(name = "nota_pregunta_3")
     private int notaTres;
-    @Column(name="nota_pregunta_4")
+    @Column(name = "nota_pregunta_4")
     private int notaCuatro;
-    @Column(name="nota_pregunta_5")
+    @Column(name = "nota_pregunta_5")
     private int notaCinco;
 
-    @Column(name="nota_pregunta_6")
+    @Column(name = "nota_pregunta_6")
     private int notaSeis;
 
-    @Column(name="nota_pregunta_7")
+    @Column(name = "nota_pregunta_7")
     private int notaSiete;
 
     public int getNotaSeis() {
@@ -65,14 +61,11 @@ public class EvaluacionProfesor {
         this.notaSiete = notaSiete;
     }
 
-
     @OneToOne()
     private Matricula idMatricula;
 
-    @Column(name="feedback")
+    @Column(name = "feedback")
     private String feedback;
-
-
 
     public String getFeedback() {
         return feedback;
@@ -81,8 +74,6 @@ public class EvaluacionProfesor {
     public void setFeedback(String feedback) {
         this.feedback = feedback;
     }
-
-
 
     public int getIdEvaluacionProfesor() {
         return idEvaluacionProfesor;
@@ -147,6 +138,8 @@ public class EvaluacionProfesor {
     public void setIdProfesor(Profesor idProfesor) {
         this.idProfesor = idProfesor;
     }
-    public EvaluacionProfesor(){
 
-    } }
+    public EvaluacionProfesor() {
+
+    }
+}

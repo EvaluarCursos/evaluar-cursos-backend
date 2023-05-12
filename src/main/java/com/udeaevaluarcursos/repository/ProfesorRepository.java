@@ -10,5 +10,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface ProfesorRepository extends JpaRepository<Profesor,Integer> {
     Optional<Profesor> findByCedula(int cedula);
-    Optional<Profesor> deleteByCedula(int cedula);
+
+    Optional<Profesor> getProfesorsByIdUsuario_Id(int idUsuario);
 }

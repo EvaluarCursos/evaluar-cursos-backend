@@ -17,22 +17,17 @@ public class EvaluacionMateria {
     @Column(name = "nota_pregunta_3")
     private int notaTres;
 
-
     @OneToOne
     private Profesor idProfesor;
 
-
-
-
     @OneToOne
     private Materia idMateria;
-
 
     @JoinColumn(name = "idMatricula")
     @OneToOne()
     private Matricula idMatricula;
 
-    @Column(name="feedback")
+    @Column(name = "feedback")
     private String feedback;
 
     public String getFeedback() {
@@ -53,7 +48,6 @@ public class EvaluacionMateria {
     }
 
 
-
     public int getNotaDos() {
         return notaDos;
     }
@@ -61,7 +55,6 @@ public class EvaluacionMateria {
     public void setNotaDos(int notaDos) {
         this.notaDos = notaDos;
     }
-
 
 
     public int getNotaTres() {
@@ -80,7 +73,6 @@ public class EvaluacionMateria {
     public void setNotaUno(int notaUno) {
         this.notaUno = notaUno;
     }
-
 
 
     public Matricula getIdMatricula() {
@@ -108,4 +100,5 @@ public class EvaluacionMateria {
     }
     public EvaluacionMateria(){
 
-    } }
+    } 
+}
