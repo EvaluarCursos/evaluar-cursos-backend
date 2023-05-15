@@ -86,7 +86,7 @@ public class WebSecurityConfig { // extends WebSecurityConfigurerAdapter {
 
 
     //DESCOMENTAR ESTA PARTE CUANDO SE HAGA EL PUSH
-
+/*
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.cors().and().csrf().disable()
@@ -102,4 +102,6 @@ public class WebSecurityConfig { // extends WebSecurityConfigurerAdapter {
 
         return http.build();
     }
+    */
+
 }

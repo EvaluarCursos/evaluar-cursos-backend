@@ -15,4 +15,8 @@ public interface EvaluacionMateriaRepository extends JpaRepository<EvaluacionMat
     @Query("select u from EvaluacionMateria u where u.idProfesor = :profesor and  u.idMateria = :materia")
     EvaluacionMateria[] findByFilters(Profesor profesor, Materia materia );
 
+    @Query(value = "select u from EvaluacionMateria u where u.idProfesor.idProfesor = :idProfessor and  u.idMateria.code = :codeMateria")
+    EvaluacionMateria[] findByCode(int idProfessor,int codeMateria);
+
+
 }

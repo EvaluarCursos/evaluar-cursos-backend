@@ -15,7 +15,13 @@ public class Estudiante {
     @Column(name="cedula")
     private int cedula;
 
-    /* @Column(name="courses")
+    @Column(name="email")
+    private String email;
+
+    public String getEmail() {
+        return email;
+    }
+/* @Column(name="courses")
     @OneToMany()
     @JoinTable(
             name="Materia",

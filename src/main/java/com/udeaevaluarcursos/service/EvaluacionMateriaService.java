@@ -17,5 +17,6 @@ public interface EvaluacionMateriaService {
 
     public EvaluationResponse getInformeByIdMateria(int idProfesor, int idMateria);
 
+    public EvaluacionMateria[] testInformeByIds(int idProfesor, int idMateria);
 
 }

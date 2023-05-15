@@ -71,13 +71,15 @@ public class EvaluacionMateriaServiceImpl implements EvaluacionMateriaService{
 
     @Override
     public  EvaluationResponse getInformeByIdMateria(int idProfesor, int idMateria) {
-        Optional<Materia> materiaFiltrar=materiaRepository.findById(idMateria);
-        Optional<Profesor> profesorFiltrar=profesorRepository.findById(idProfesor);
+        //Optional<Materia> materiaFiltrar=materiaRepository.findById(idMateria);
+        //Optional<Profesor> profesorFiltrar=profesorRepository.findById(idProfesor);
 
-        if(materiaFiltrar.isPresent() && profesorFiltrar.isPresent()) {
-            EvaluacionMateria[] evaluacionesMateriasPorFiltros=evaluacionMateriaRepository.findByFilters(profesorFiltrar.get(),materiaFiltrar.get());
-            EvaluacionProfesor[] evaluacionesProfesorPorFiltros=evaluacionProfesorRepository.findByFilters(profesorFiltrar.get(),materiaFiltrar.get());
 
+            //EvaluacionMateria[] evaluacionesMateriasPorFiltros=evaluacionMateriaRepository.findByFilters(profesorFiltrar.get(),materiaFiltrar.get());
+            //EvaluacionProfesor[] evaluacionesProfesorPorFiltros=evaluacionProfesorRepository.findByFilters(profesorFiltrar.get(),materiaFiltrar.get());
+
+        EvaluacionMateria[] evaluacionesMateriasPorFiltros=evaluacionMateriaRepository.findByCode(idProfesor,idMateria);
+        EvaluacionProfesor[] evaluacionesProfesorPorFiltros=evaluacionProfesorRepository.findByCode(idProfesor,idMateria);
 
             PreguntasEvaluaciones preguntasEvaluaciones=new PreguntasEvaluaciones();
 
@@ -119,8 +121,8 @@ public class EvaluacionMateriaServiceImpl implements EvaluacionMateriaService{
             }
 
             EvaluationResponse evaluationResponse = new EvaluationResponse();
-            evaluationResponse.headers.put("professor", profesorFiltrar.get().getNombre());
-            evaluationResponse.headers.put("subject", materiaFiltrar.get().getNombreMateria());
+            evaluationResponse.headers.put("professor", evaluacionesProfesorPorFiltros[0].getIdProfesor().getNombre());
+            evaluationResponse.headers.put("subject", evaluacionesMateriasPorFiltros[0].getIdMateria().getNombreMateria());
 
 
             evaluationResponse.seccion1.put("q1", preguntasEvaluaciones.getQ1());
@@ -136,12 +138,17 @@ public class EvaluacionMateriaServiceImpl implements EvaluacionMateriaService{
 
             return evaluationResponse;
 
-        }
 
 
 
 
-        return null;
+
+
+    }
+
+    @Override
+    public EvaluacionMateria[] testInformeByIds(int idProfesor, int idMateria) {
+        return evaluacionMateriaRepository.findByCode(idProfesor,idMateria);
     }
 
 

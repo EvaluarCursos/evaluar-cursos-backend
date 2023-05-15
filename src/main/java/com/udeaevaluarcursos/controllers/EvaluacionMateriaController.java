@@ -70,4 +70,15 @@ public class EvaluacionMateriaController {
 
 
     }
+
+    @GetMapping("/informe-materia/test/{idProfesor}/{idMateria}")
+    public ResponseEntity< EvaluacionMateria[]> getTestInformesByIds(@PathVariable("idProfesor") int idProfesor , @PathVariable("idMateria") int idMateria){
+
+        EvaluacionMateria[] evaluacionMateria=evaluacionMateriaServiceImpl.testInformeByIds(idProfesor,idMateria);
+
+
+        return new ResponseEntity<>(evaluacionMateria, HttpStatus.OK);
+
+
+    }
 }

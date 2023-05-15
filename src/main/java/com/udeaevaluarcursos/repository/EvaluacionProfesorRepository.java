@@ -9,4 +9,7 @@ import org.springframework.stereotype.Repository;
 public interface EvaluacionProfesorRepository extends JpaRepository<EvaluacionProfesor,Integer> {
     @Query("select u from EvaluacionProfesor u where u.idProfesor = :profesor and  u.idMateria = :materia")
     EvaluacionProfesor[] findByFilters(Profesor profesor, Materia materia );
+
+    @Query(value = "select u from EvaluacionProfesor u where u.idProfesor.idProfesor = :idProfessor and  u.idMateria.code = :codeMateria")
+    EvaluacionProfesor[] findByCode(int idProfessor,int codeMateria);
 }
