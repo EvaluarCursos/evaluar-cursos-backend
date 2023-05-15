@@ -23,7 +23,7 @@ public class UsuarioController {
     @Autowired
     EstudianteServiceImpl estudianteServiceImpl;
 
-    @GetMapping("/login")
+   /* @GetMapping("/login")
     public ResponseEntity<UsuarioLogeado> login(
             @RequestParam(value = "email", required = true) String email,
             @RequestParam(value = "password", required = true) String password
@@ -42,7 +42,7 @@ public class UsuarioController {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 
         }
-    }
+    }*/
 
     @PostMapping("/create-usuario")
     public ResponseEntity<Usuario> createUsuario(@RequestBody Usuario usuario) {

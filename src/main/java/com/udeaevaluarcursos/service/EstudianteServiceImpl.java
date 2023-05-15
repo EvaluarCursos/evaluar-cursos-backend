@@ -22,14 +22,6 @@ public class EstudianteServiceImpl implements EstudianteService {
         return listadoEstudiantes;
     }
 
-    public int getCedulaByUserId(int idUsuario){
-        Optional<Estudiante> estudiante = estudianteRepository.idUsuario);
-        if(!estudiante.isPresent()){
-            return 0;
-        }
-        return estudiante.get().getCedula();
-    }
-
     @Override
     public Estudiante getEstudianteByCedula(int cedula) {
         Optional<Estudiante> estudiante= estudianteRepository.findByCedula(cedula);
