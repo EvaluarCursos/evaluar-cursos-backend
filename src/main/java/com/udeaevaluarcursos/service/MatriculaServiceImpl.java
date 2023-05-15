@@ -36,7 +36,7 @@ public class MatriculaServiceImpl implements MatriculaService  {
             CoursesPerTeacher course = new CoursesPerTeacher();
             course.setMateriaId(matricula.getIdMateria().getIdMateria());
             course.setCode(matricula.getIdMateria().getCode());
-            course.setMateria(matricula.getIdMateria().getNombre());
+            course.setName(matricula.getIdMateria().getNombre());
             course.setFaculty(matricula.getFaculty());
             coursesPerTeacher.add(course);
         }
@@ -49,11 +49,11 @@ public class MatriculaServiceImpl implements MatriculaService  {
         List<CoursesPerStudent> coursesPerStudent = new ArrayList<>();
         for(Matricula matricula: matriculasPerStudent){
             CoursesPerStudent course = new CoursesPerStudent();
-            course.setMatriculaId(matricula.getIdMatricula());
+            course.setId(matricula.getIdMatricula());
             course.setCode(matricula.getIdMateria().getCode());
-            course.setNombreProfesor(matricula.getIdProfesor().getNombre());
-            course.setCalificado(matricula.getCalificado());
-            course.setMateria(matricula.getIdMateria().getNombre());
+            course.setTeacher(matricula.getIdProfesor().getNombre());
+            course.setEvaluated(matricula.getCalificado());
+            course.setName(matricula.getIdMateria().getNombre());
             coursesPerStudent.add(course);
         }
         return coursesPerStudent;

@@ -1,11 +1,11 @@
 package com.udeaevaluarcursos.params.response;
 
 public class CoursesPerStudent {
-    private int matriculaId;
+    private int id;
     private String code;
-    private String nombreProfesor;
-    private String materia;
-    private int calificado;
+    private String teacher;
+    private String name;
+    private int evaluated;
 
     public CoursesPerStudent(
 
@@ -13,43 +13,43 @@ public class CoursesPerStudent {
 
     }
 
-    public void setMatriculaId(int matriculaId) {
-        this.matriculaId = matriculaId;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public void setCode(String code) {
         this.code = code;
     }
 
-    public void setNombreProfesor(String nombreProfesor) {
-        this.nombreProfesor = nombreProfesor;
+    public void setTeacher(String teacher) {
+        this.teacher = teacher;
     }
 
-    public void setMateria(String materia) {
-        this.materia = materia;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public void setCalificado(int calificado) {
-        this.calificado = calificado;
+    public void setEvaluated(int evaluated) {
+        this.evaluated = evaluated;
     }
 
-    public int getMatriculaId() {
-        return matriculaId;
+    public int getId() {
+        return id;
     }
 
     public String getCode() {
         return code;
     }
 
-    public String getNombreProfesor() {
-        return nombreProfesor;
+    public String getTeacher() {
+        return teacher;
     }
 
-    public String getMateria() {
-        return materia;
+    public String getName() {
+        return name;
     }
 
-    public int getCalificado() {
-        return calificado;
+    public int getEvaluated() {
+        return evaluated;
     }
 }

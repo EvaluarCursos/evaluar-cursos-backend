@@ -20,7 +20,7 @@ public class MatriculaController {
 
     @GetMapping("/courses-per-student/{idEstudiante}")
     public ResponseEntity<List<CoursesPerStudent>> coursesPerStudent(
-            @PathVariable("idEstudiante") int estudianteId
+            @PathVariable("userId") int estudianteId
     ){
         List<CoursesPerStudent> coursesPerStudent = matriculaServiceImpl.getCoursesPerStudent(estudianteId);
         if (coursesPerStudent != null) {
@@ -32,7 +32,7 @@ public class MatriculaController {
 
     @GetMapping("/courses-per-teacher/{idProfesor}")
     public ResponseEntity<List<CoursesPerTeacher>> coursesPerTeacher(
-            @PathVariable("idProfesor") int profesorId,
+            @PathVariable("userID") int profesorId,
             @RequestParam(name="Faculty", required = false) String faculty,
             @RequestParam(name="Semester", required = false) String semester,
             @RequestParam(name="Course", required = false) String course

@@ -22,6 +22,10 @@ public class EvaluacionProfesor {
     private int notaCuatro;
     @Column(name = "nota_pregunta_5")
     private int notaCinco;
+    @Column(name = "nota_pregunta_6")
+    private int notaSeis;
+    @Column(name = "nota_pregunta_7")
+    private int notaSiete;
 
 
     @JoinColumn(name = "idMatricula")
@@ -98,6 +102,21 @@ public class EvaluacionProfesor {
         this.idMatricula = idMatricula;
     }
 
+    public void setNotaSeis(int notaSeis) {
+        this.notaSeis = notaSeis;
+    }
+
+    public void setNotaSiete(int notaSiete) {
+        this.notaSiete = notaSiete;
+    }
+
+    public int getNotaSeis() {
+        return notaSeis;
+    }
+
+    public int getNotaSiete() {
+        return notaSiete;
+    }
 
     public EvaluacionProfesor() {
 

@@ -28,13 +28,15 @@ public class EvaluacionProfesorController {
     @PostMapping("/form")
     public ResponseEntity<EvaluacionProfesor> createEvaluacion(@RequestBody EvalProfesorRequest evaluacionRequest) {
         EvaluacionProfesor evaluacionProfesor = new EvaluacionProfesor();
-        evaluacionProfesor.setNotaUno(evaluacionRequest.getNotaUno());
-        evaluacionProfesor.setNotaDos(evaluacionRequest.getNotaDos());
-        evaluacionProfesor.setNotaTres(evaluacionRequest.getNotaTres());
-        evaluacionProfesor.setNotaCuatro(evaluacionRequest.getNotaCuatro());
-        evaluacionProfesor.setNotaCinco(evaluacionRequest.getNotaCinco());
+        evaluacionProfesor.setNotaUno(evaluacionRequest.getQ1());
+        evaluacionProfesor.setNotaDos(evaluacionRequest.getQ2());
+        evaluacionProfesor.setNotaTres(evaluacionRequest.getQ3());
+        evaluacionProfesor.setNotaCuatro(evaluacionRequest.getQ4());
+        evaluacionProfesor.setNotaCinco(evaluacionRequest.getQ5());
+        evaluacionProfesor.setNotaSeis(evaluacionRequest.getQ6());
+        evaluacionProfesor.setNotaSiete(evaluacionRequest.getQ7());
 
-        int idMatricula = evaluacionRequest.getIdMatricula();
+        int idMatricula = evaluacionRequest.getId();
         Optional<Matricula> optionalMatricula = matriculaRepository.findById(idMatricula);
         if (optionalMatricula.isPresent()) {
             Matricula matricula = optionalMatricula.get();

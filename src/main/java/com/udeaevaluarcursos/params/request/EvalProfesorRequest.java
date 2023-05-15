@@ -1,64 +1,82 @@
 package com.udeaevaluarcursos.params.request;
 
 public class EvalProfesorRequest {
-    private int notaUno;
-    private int notaDos;
-    private int notaTres;
-    private int notaCuatro;
-    private int notaCinco;
-    private int idMatricula;
+    private int q1;
+    private int q2;
+    private int q3;
+    private int q4;
+    private int q5;
+    private int q6;
+    private int q7;
+    private int id;
     private String feedback;
 
-    public void setNotaUno(int notaUno) {
-        this.notaUno = notaUno;
+    public void setQ1(int q1) {
+        this.q1 = q1;
     }
 
-    public void setNotaDos(int notaDos) {
-        this.notaDos = notaDos;
+    public void setQ2(int q2) {
+        this.q2 = q2;
     }
 
-    public void setNotaTres(int notaTres) {
-        this.notaTres = notaTres;
+    public void setQ3(int q3) {
+        this.q3 = q3;
     }
 
-    public void setNotaCuatro(int notaCuatro) {
-        this.notaCuatro = notaCuatro;
+    public void setQ4(int q4) {
+        this.q4 = q4;
     }
 
-    public void setNotaCinco(int notaCinco) {
-        this.notaCinco = notaCinco;
+    public void setQ5(int q5) {
+        this.q5 = q5;
     }
 
-    public void setIdMatricula(int idMatricula) {
-        this.idMatricula = idMatricula;
+    public void setQ6(int q6) {
+        this.q6 = q6;
+    }
+
+    public void setQ7(int q7) {
+        this.q7 = q7;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public void setFeedback(String feedback) {
         this.feedback = feedback;
     }
 
-    public int getNotaUno() {
-        return notaUno;
+    public int getQ1() {
+        return q1;
     }
 
-    public int getNotaDos() {
-        return notaDos;
+    public int getQ2() {
+        return q2;
     }
 
-    public int getNotaTres() {
-        return notaTres;
+    public int getQ3() {
+        return q3;
     }
 
-    public int getNotaCuatro() {
-        return notaCuatro;
+    public int getQ4() {
+        return q4;
     }
 
-    public int getNotaCinco() {
-        return notaCinco;
+    public int getQ5() {
+        return q5;
     }
 
-    public int getIdMatricula() {
-        return idMatricula;
+    public int getQ6() {
+        return q6;
+    }
+
+    public int getQ7() {
+        return q7;
+    }
+
+    public int getId() {
+        return id;
     }
 
     public String getFeedback() {

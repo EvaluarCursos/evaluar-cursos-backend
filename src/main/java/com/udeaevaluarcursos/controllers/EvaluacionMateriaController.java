@@ -40,13 +40,11 @@ public class EvaluacionMateriaController {
     @PostMapping("/form")
     public ResponseEntity<EvaluacionMateria> createEvaluacion(@RequestBody EvalMateriaRequest evaluacionRequest) {
         EvaluacionMateria evaluacionMateria = new EvaluacionMateria();
-        evaluacionMateria.setNotaUno(evaluacionRequest.getNotaUno());
-        evaluacionMateria.setNotaDos(evaluacionRequest.getNotaDos());
-        evaluacionMateria.setNotaTres(evaluacionRequest.getNotaTres());
-        evaluacionMateria.setNotaCuatro(evaluacionRequest.getNotaCuatro());
-        evaluacionMateria.setNotaCinco(evaluacionRequest.getNotaCinco());
+        evaluacionMateria.setNotaUno(evaluacionRequest.getQ1());
+        evaluacionMateria.setNotaDos(evaluacionRequest.getQ2());
+        evaluacionMateria.setNotaTres(evaluacionRequest.getQ3());
 
-        int idMatricula = evaluacionRequest.getIdMatricula();
+        int idMatricula = evaluacionRequest.getId();
         Optional<Matricula> optionalMatricula = matriculaRepository.findById(idMatricula);
                 //.orElseThrow(() -> new ResourceNotFoundException("Matricula not found with id " + evaluacionRequest.getIdMatricula()));
         if (optionalMatricula.isPresent()) {
