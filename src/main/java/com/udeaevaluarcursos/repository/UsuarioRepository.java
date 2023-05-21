@@ -1,9 +1,15 @@
 package com.udeaevaluarcursos.repository;
 
-import com.udeaevaluarcursos.models.User;
 import org.springframework.data.jpa.repository.JpaRepository;
+import com.udeaevaluarcursos.models.Usuario;
 import org.springframework.stereotype.Repository;
 
+import java.util.Optional;
 
-public interface UsuarioRepository  {
+@Repository
+public interface UsuarioRepository extends JpaRepository<Usuario, Integer> {
+    Optional<Usuario> findByEmailAndPassword(String email, String password);
+    Optional<Usuario> findByEmail(String email);
+
+
 }

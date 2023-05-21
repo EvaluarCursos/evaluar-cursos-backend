@@ -1,10 +1,9 @@
 package com.udeaevaluarcursos.models;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
-import com.udeaevaluarcursos.models.Matricula;
+
 @Entity
-@Table(name="evaluacion_materia")
+@Table(name = "evaluacion_materia")
 public class EvaluacionMateria {
 
     @Id
@@ -17,22 +16,17 @@ public class EvaluacionMateria {
     @Column(name = "nota_pregunta_3")
     private int notaTres;
 
-
     @OneToOne
     private Profesor idProfesor;
 
-
-
-
     @OneToOne
     private Materia idMateria;
-
 
     @JoinColumn(name = "idMatricula")
     @OneToOne()
     private Matricula idMatricula;
 
-    @Column(name="feedback")
+    @Column(name = "feedback")
     private String feedback;
 
     public String getFeedback() {
@@ -43,7 +37,6 @@ public class EvaluacionMateria {
         this.feedback = feedback;
     }
 
-
     public int getIdEvaluacionMateria() {
         return idEvaluacionMateria;
     }
@@ -51,8 +44,6 @@ public class EvaluacionMateria {
     public void setIdEvaluacionMateria(int id) {
         this.idEvaluacionMateria = id;
     }
-
-
 
     public int getNotaDos() {
         return notaDos;
@@ -62,8 +53,6 @@ public class EvaluacionMateria {
         this.notaDos = notaDos;
     }
 
-
-
     public int getNotaTres() {
         return notaTres;
     }
@@ -72,7 +61,6 @@ public class EvaluacionMateria {
         this.notaTres = notaTres;
     }
 
-
     public int getNotaUno() {
         return notaUno;
     }
@@ -80,8 +68,6 @@ public class EvaluacionMateria {
     public void setNotaUno(int notaUno) {
         this.notaUno = notaUno;
     }
-
-
 
     public Matricula getIdMatricula() {
         return idMatricula;
@@ -106,6 +92,8 @@ public class EvaluacionMateria {
     public void setIdMateria(Materia idMateria) {
         this.idMateria = idMateria;
     }
-    public EvaluacionMateria(){
 
-    } }
+    public EvaluacionMateria() {
+
+    }
+}

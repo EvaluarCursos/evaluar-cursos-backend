@@ -17,6 +17,14 @@ public class ProfesorServiceImpl implements ProfesorService {
     ProfesorRepository profesorRepository;
 
     @Override
+    public int getCedulaByUserId(int idUsuario){
+        Optional<Profesor> profesor = profesorRepository.getProfesorsByIdUsuario_Id(idUsuario);
+        if(!profesor.isPresent()){
+            return 0;
+        }
+        return profesor.get().getCedula();
+    }
+    @Override
     public List<Profesor> listProfesors() {
        List<Profesor> profesors = profesorRepository.findAll();
        return profesors;

@@ -1,24 +1,56 @@
 package com.udeaevaluarcursos.controllers;
 
 import com.udeaevaluarcursos.models.EvaluacionProfesor;
+import com.udeaevaluarcursos.models.Matricula;
+import com.udeaevaluarcursos.params.request.EvalProfesorRequest;
+import com.udeaevaluarcursos.repository.EvaluacionProfesorRepository;
+import com.udeaevaluarcursos.repository.MatriculaRepository;
 import com.udeaevaluarcursos.service.EvaluacionProfesorServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
+import java.util.Optional;
 
 
-
-@Controller
+@RestController
 @RequestMapping("/evaluacion-profesor")
 public class EvaluacionProfesorController {
 
 
     @Autowired
     EvaluacionProfesorServiceImpl evaluacionProfesorServiceImpl;
+    @Autowired
+    MatriculaRepository matriculaRepository;
+    @Autowired
+    EvaluacionProfesorRepository evaluacionProfesorRepository;
+    @PostMapping("/form")
+    public ResponseEntity<EvaluacionProfesor> createEvaluacion(@RequestBody EvalProfesorRequest evaluacionRequest) {
+        EvaluacionProfesor evaluacionProfesor = new EvaluacionProfesor();
+        evaluacionProfesor.setNotaUno(evaluacionRequest.getQ1());
+        evaluacionProfesor.setNotaDos(evaluacionRequest.getQ2());
+        evaluacionProfesor.setNotaTres(evaluacionRequest.getQ3());
+        evaluacionProfesor.setNotaCuatro(evaluacionRequest.getQ4());
+        evaluacionProfesor.setNotaCinco(evaluacionRequest.getQ5());
+        evaluacionProfesor.setNotaSeis(evaluacionRequest.getQ6());
+        evaluacionProfesor.setNotaSiete(evaluacionRequest.getQ7());
 
+        int idMatricula = evaluacionRequest.getId();
+        Optional<Matricula> optionalMatricula = matriculaRepository.findById(idMatricula);
+        if (optionalMatricula.isPresent()) {
+            Matricula matricula = optionalMatricula.get();
+            evaluacionProfesor.setIdMatricula(matricula);
+        } else {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+
+        evaluacionProfesor.setFeedback(evaluacionRequest.getFeedback());
+
+        EvaluacionProfesor createdEvaluacion = evaluacionProfesorRepository.save(evaluacionProfesor);
+
+        return ResponseEntity.ok(createdEvaluacion);
+    }
 
     @PostMapping("/create-evaluacion-profesor")
     public ResponseEntity<EvaluacionProfesor> createEvaluacionProfesor(@RequestBody EvaluacionProfesor evaluacionProfesor){
@@ -50,10 +82,6 @@ public class EvaluacionProfesorController {
             return new ResponseEntity<>(evaluacionProfesor, HttpStatus.BAD_REQUEST);
         }
     }
-
-
-
-
 
     @DeleteMapping("/delete-evaluacion-profesor/{id}")
     public ResponseEntity<EvaluacionProfesor> deleteEvaluacionProfesor(@PathVariable("id") int id){

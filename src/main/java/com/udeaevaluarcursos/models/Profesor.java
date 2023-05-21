@@ -10,21 +10,22 @@ public class Profesor {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idProfesor;
 
-    @Column(name="cedula")
+    @Column(name = "cedula")
     private int cedula;
 
-    @Column(name="nombre")
+    @Column(name = "nombre")
     private String nombre;
 
-    @Column(name="email")
-    private String email;
+    @JoinColumn(name = "idUsuario")
+    @OneToOne()
+    private Usuario idUsuario;
 
-    public String getEmail() {
-        return email;
+    public void setIdUsuario(Usuario idUsuario) {
+        this.idUsuario = idUsuario;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public Usuario getIdUsuario() {
+        return idUsuario;
     }
 
     public String getNombre() {
@@ -52,7 +53,7 @@ public class Profesor {
     }
 
 
-    public Profesor(){
+    public Profesor() {
 
     } }
 

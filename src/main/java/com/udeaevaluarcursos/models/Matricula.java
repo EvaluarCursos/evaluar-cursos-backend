@@ -1,40 +1,40 @@
 package com.udeaevaluarcursos.models;
 
-import com.udeaevaluarcursos.models.Profesor;
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.util.List;
 
 @Entity
-@Table(name="matricula")
+@Table(name = "matricula")
 public class Matricula {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idMatricula;
 
-
-
+    @JoinColumn(name = "idEstudiante")
     @ManyToOne()
     private Estudiante idEstudiante;
 
-
-    @ManyToMany ()
+    @ManyToMany()
     private List<Materia> idMateria;
 
+    @JoinColumn(name = "idProfesor")
+    @ManyToOne()
+    private Profesor idProfesor;
 
+    @Column(name = "semestre", length = 10)
+    private String semestre;
 
-    @ManyToMany ()
-    private List<Profesor> idProfesor;
-
-
-    @Column(name="semestre")
-    private int semestre;
-
-    @Column(name="calificado")
+    @Column(name = "calificado")
     private int calificado;
+
+    public String getFaculty() {
+        return faculty;
+    }
+
+    @Column(name = "faculty", length = 10)
+    private String faculty;
 
     public int getCalificado() {
         return calificado;
@@ -56,7 +56,9 @@ public class Matricula {
         return idEstudiante;
     }
 
-    public void setIdEstudiante(Estudiante idEstudiante) {this.idEstudiante = idEstudiante;}
+    public void setIdEstudiante(Estudiante idEstudiante) {
+        this.idEstudiante = idEstudiante;
+    }
 
     public List<Materia> getIdMateria() {
         return idMateria;
@@ -66,25 +68,23 @@ public class Matricula {
         this.idMateria = idMateria;
     }
 
-    public List<Profesor> getIdProfesor() {
+    public Profesor getIdProfesor() {
         return idProfesor;
     }
 
-    public void setIdProfesor(List<Profesor> idProfesor) {
+    public void setIdProfesor(Profesor idProfesor) {
         this.idProfesor = idProfesor;
     }
 
-    public int getSemestre() {
+    public String getSemestre() {
         return semestre;
     }
 
-    public void setSemestre(int semestre) {
+    public void setSemestre(String semestre) {
         this.semestre = semestre;
     }
 
+    public Matricula() {
 
-
-
-    public Matricula(){
-
-    } }
+    }
+}

@@ -39,7 +39,7 @@ public class EstudianteServiceImpl implements EstudianteService {
 
         if(estudiantePorCedula.isPresent()) {
             return null;
-    }
+        }
 
         estudianteRepository.save(estudiante);
 
