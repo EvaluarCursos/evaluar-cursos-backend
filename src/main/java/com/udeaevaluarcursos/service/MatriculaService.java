@@ -15,6 +15,7 @@ public interface MatriculaService {
 
     public Matricula updateMatricula(Matricula matricula);
 
+    /*
     List<CoursesPerTeacher> getCoursesPerTeacher(
             int profesorId,
             String faculty,
@@ -23,4 +24,6 @@ public interface MatriculaService {
     );
 
     public List<CoursesPerStudent> getCoursesPerStudent(int estudianteId);
+    */
+
 }

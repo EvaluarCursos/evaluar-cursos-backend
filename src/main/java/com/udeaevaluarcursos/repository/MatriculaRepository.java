@@ -14,6 +14,7 @@ public interface MatriculaRepository extends JpaRepository<Matricula,Integer> {
 
     List<Matricula> findAllByIdEstudiante_IdEstudiante(int idEstudiante);
 
+    /*
     @Query("SELECT m FROM Matricula m JOIN m.idProfesor p WHERE p.idProfesor = :idProfesor" +
             " AND (:faculty IS NULL OR m.faculty = :faculty)" +
             " AND (:semester IS NULL OR m.semestre = :semester)" +
@@ -24,5 +25,7 @@ public interface MatriculaRepository extends JpaRepository<Matricula,Integer> {
             @Param("semester") String semester,
             @Param("materia") String materia
     );
+    */
+
 
 }

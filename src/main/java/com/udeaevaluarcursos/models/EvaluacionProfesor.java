@@ -37,6 +37,23 @@ public class EvaluacionProfesor {
     private int notaCinco;
     @Column(name = "nota_pregunta_6")
     private int notaSeis;
+
+    public int getNotaSeis() {
+        return notaSeis;
+    }
+
+    public void setNotaSeis(int notaSeis) {
+        this.notaSeis = notaSeis;
+    }
+
+    public int getNotaSiete() {
+        return notaSiete;
+    }
+
+    public void setNotaSiete(int notaSiete) {
+        this.notaSiete = notaSiete;
+    }
+
     @Column(name = "nota_pregunta_7")
     private int notaSiete;
 

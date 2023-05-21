@@ -13,11 +13,13 @@ import org.springframework.stereotype.Service;
 import com.udeaevaluarcursos.models.Matricula;
 import com.udeaevaluarcursos.repository.MatriculaRepository;
 
+
 @Service
 public class MatriculaServiceImpl implements MatriculaService  {
     @Autowired
     MatriculaRepository matriculaRepository;
 
+    /*
     @Override
     public List<CoursesPerTeacher> getCoursesPerTeacher(
             int profesorId,
@@ -43,6 +45,7 @@ public class MatriculaServiceImpl implements MatriculaService  {
         return coursesPerTeacher;
     }
 
+
     @Override
     public List<CoursesPerStudent> getCoursesPerStudent(int estudianteId) {
         List<Matricula> matriculasPerStudent = matriculaRepository.findAllByIdEstudiante_IdEstudiante(estudianteId);
@@ -58,6 +61,8 @@ public class MatriculaServiceImpl implements MatriculaService  {
         }
         return coursesPerStudent;
     }
+   */
+
     @Override
     public List<Matricula> listMatriculas() {
         List<Matricula> listadoMatriculas = matriculaRepository.findAll();

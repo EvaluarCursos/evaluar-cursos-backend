@@ -18,6 +18,8 @@ public class MatriculaController {
     @Autowired
     MatriculaServiceImpl matriculaServiceImpl;
 
+
+    /*
     @GetMapping("/courses-per-student/{idEstudiante}")
     public ResponseEntity<List<CoursesPerStudent>> coursesPerStudent(
             @PathVariable("userId") int estudianteId
@@ -49,7 +51,7 @@ public class MatriculaController {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
     }
-
+ */
     @PostMapping("/create-matricula")
     public ResponseEntity<Matricula> createMatricula(@RequestBody Matricula matricula) {
 
