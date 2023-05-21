@@ -123,8 +123,6 @@ public class EvaluacionMateriaServiceImpl implements EvaluacionMateriaService{
             EvaluationResponse evaluationResponse = new EvaluationResponse();
             evaluationResponse.headers.put("professor", evaluacionesProfesorPorFiltros[0].getIdProfesor().getNombre());
             evaluationResponse.headers.put("subject", evaluacionesMateriasPorFiltros[0].getIdMateria().getNombreMateria());
-
-
             evaluationResponse.seccion1.put("q1", preguntasEvaluaciones.getQ1());
             evaluationResponse.seccion2.put("q2", preguntasEvaluaciones.getQ2());
             evaluationResponse.seccion3.put("q3", preguntasEvaluaciones.getQ3());
