@@ -5,6 +5,7 @@ import java.util.List;
 
 import java.util.Optional;
 
+import com.udeaevaluarcursos.models.Estudiante;
 import com.udeaevaluarcursos.params.response.CoursesPerTeacher;
 import com.udeaevaluarcursos.params.response.CoursesPerStudent;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -63,6 +64,9 @@ public class MatriculaServiceImpl implements MatriculaService  {
     }
    */
 
+
+
+
     @Override
     public List<Matricula> listMatriculas() {
         List<Matricula> listadoMatriculas = matriculaRepository.findAll();
@@ -104,6 +108,17 @@ public class MatriculaServiceImpl implements MatriculaService  {
         matriculaRepository.delete(matricula.get());
 
         return matricula.get();
+    }
+
+    @Override
+    public Matricula matriculaByEstudiante(int estudiante) {
+        Optional<Matricula> matricula= matriculaRepository.findMatriculaByFilter(estudiante);
+
+        if(matricula.isPresent()){
+            return matricula.get();
+        }
+
+        return null;
     }
 
     @Override

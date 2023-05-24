@@ -1,4 +1,5 @@
 package com.udeaevaluarcursos.service;
+import com.udeaevaluarcursos.models.Estudiante;
 import com.udeaevaluarcursos.models.Matricula;
 import com.udeaevaluarcursos.params.response.CoursesPerStudent;
 import com.udeaevaluarcursos.params.response.CoursesPerTeacher;
@@ -13,6 +14,7 @@ public interface MatriculaService {
     public Matricula createMatricula(Matricula matricula);
     public Matricula deleteMatricula(int id);
 
+    public Matricula matriculaByEstudiante (int estudiante);
     public Matricula updateMatricula(Matricula matricula);
 
     /*

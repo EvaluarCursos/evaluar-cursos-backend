@@ -8,6 +8,8 @@ public interface EstudianteService {
     public List<Estudiante> listEstudiantes();
     public Estudiante getEstudianteByCedula(int cedula);
 
+    public Estudiante getEstudianteByEmail(String email);
+
     public Estudiante createEstudiante(Estudiante estudiante);
     public Estudiante deleteEstudiante(int cedula);
 

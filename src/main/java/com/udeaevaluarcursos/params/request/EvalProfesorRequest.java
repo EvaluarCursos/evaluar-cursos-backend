@@ -1,14 +1,37 @@
 package com.udeaevaluarcursos.params.request;
 
 public class EvalProfesorRequest {
+
+    private int userId;
+
     private int q1;
     private int q2;
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
+
     private int q3;
     private int q4;
     private int q5;
     private int q6;
     private int q7;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     private int id;
+
+
     private String feedback;
 
     public void setQ1(int q1) {
@@ -39,9 +62,7 @@ public class EvalProfesorRequest {
         this.q7 = q7;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
+
 
     public void setFeedback(String feedback) {
         this.feedback = feedback;
@@ -75,9 +96,7 @@ public class EvalProfesorRequest {
         return q7;
     }
 
-    public int getId() {
-        return id;
-    }
+
 
     public String getFeedback() {
         return feedback;

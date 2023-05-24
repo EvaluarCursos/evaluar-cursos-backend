@@ -1,13 +1,13 @@
 package com.udeaevaluarcursos.service;
 
-import com.udeaevaluarcursos.models.Estudiante;
 import com.udeaevaluarcursos.models.Materia;
-import com.udeaevaluarcursos.models.Profesor;
-import com.udeaevaluarcursos.repository.EvaluacionProfesorRepository;
+import com.udeaevaluarcursos.models.ProfesorMateria;
+import com.udeaevaluarcursos.params.response.CourseByFilter;
 import com.udeaevaluarcursos.repository.MateriaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -17,6 +17,11 @@ public class MateriaServiceImpl implements MateriaService{
     @Autowired
     MateriaRepository materiaRepository;
 
+    @Autowired
+    MatriculaServiceImpl matriculaService;
+
+    @Autowired
+    ProfesorMateriaServiceImpl profesorMateriaService;
 
     @Override
     public List<Materia> listMaterias() {
@@ -73,4 +78,27 @@ public class MateriaServiceImpl implements MateriaService{
 
         return materiaActualizar.get();
     }
+
+    @Override
+    public List<Materia> listMateriasByIdEstudiante(int estudiante) {
+        return matriculaService.matriculaByEstudiante(estudiante).getIdMateria();
+    }
+
+    @Override
+    public List<CourseByFilter> listMateriasByFilters(int profesor, String semestre, String facultad) {
+
+        List<ProfesorMateria> lista=profesorMateriaService.listProfesorMateriaByFilters( profesor, semestre,facultad);
+        List<CourseByFilter> respuesta= new ArrayList<>();
+
+        for (int i=0;i<lista.toArray().length;i++){
+            ProfesorMateria object= lista.get(i);
+
+            respuesta.add(new CourseByFilter(Integer.toString(object.getIdMateria().getIdMateria()),object.getIdMateria().getNombreMateria(),Integer.toString(object.getIdMateria().getCode()), facultad));
+
+        }
+
+        return respuesta;
+    }
+
+
 }

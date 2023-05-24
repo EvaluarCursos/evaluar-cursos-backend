@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import com.udeaevaluarcursos.models.Estudiante;
+import com.udeaevaluarcursos.models.Materia;
 import com.udeaevaluarcursos.models.Matricula;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -50,6 +51,16 @@ public class ProfesorServiceImpl implements ProfesorService {
     }
 
     @Override
+    public Profesor getProfesorById(int id) {
+        Optional<Profesor> profesor= profesorRepository.findById(id);
+        if (!profesor.isPresent()) {
+            return null;
+        }
+
+        return profesor.get();
+    }
+
+    @Override
     public Profesor deleteProfesor(int cedula) {
         Optional<Profesor> profesor= profesorRepository.findByCedula(cedula);
         if (!profesor.isPresent()) {
@@ -59,7 +70,15 @@ public class ProfesorServiceImpl implements ProfesorService {
 
         return profesor.get();
     }
+    @Override
+    public Profesor getProfesorByEmail(String email) {
+        Optional<Profesor> profesor= profesorRepository.findByEmail(email);
+        if (!profesor.isPresent()) {
+            return null;
+        }
 
+        return profesor.get();
+    }
     @Override
     public Profesor updateProfesor(Profesor profesor) {
         Optional<Profesor> profesorActualizar= profesorRepository.findById(profesor.getIdProfesor());

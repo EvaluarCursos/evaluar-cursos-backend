@@ -1,16 +1,20 @@
 package com.udeaevaluarcursos.repository;
 
-import com.udeaevaluarcursos.models.Estudiante;
-import com.udeaevaluarcursos.models.Matricula;
+import com.udeaevaluarcursos.models.*;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import java.util.List;
+import java.util.Optional;
 
 
 @Repository
 public interface MatriculaRepository extends JpaRepository<Matricula,Integer> {
+
+
+    @Query("select u from Matricula u where u.idEstudiante.idEstudiante = :estudiante")
+    Optional<Matricula> findMatriculaByFilter(int estudiante);
 
     List<Matricula> findAllByIdEstudiante_IdEstudiante(int idEstudiante);
 

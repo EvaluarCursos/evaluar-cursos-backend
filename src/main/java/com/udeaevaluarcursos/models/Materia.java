@@ -8,6 +8,16 @@ public class Materia {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idMateria;
+    @Column(name = "faculty", length = 10)
+    private String faculty;
+
+    public String getFaculty() {
+        return faculty;
+    }
+
+    public void setFaculty(String faculty) {
+        this.faculty = faculty;
+    }
 
     @Column(name = "code")
     private int code;

@@ -16,6 +16,17 @@ public class Profesor {
     @Column(name = "nombre")
     private String nombre;
 
+    @Column(name = "email")
+    private String email;
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     @JoinColumn(name = "idUsuario")
     @OneToOne()
     private Usuario idUsuario;

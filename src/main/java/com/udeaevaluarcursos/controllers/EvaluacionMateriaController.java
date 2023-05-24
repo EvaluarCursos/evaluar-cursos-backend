@@ -3,12 +3,15 @@ import java.util.Optional;
 
 import com.udeaevaluarcursos.models.EvaluacionMateria;
 import com.udeaevaluarcursos.models.EvaluationResponse;
+import com.udeaevaluarcursos.models.Materia;
 import com.udeaevaluarcursos.params.request.EvalMateriaRequest;
 import com.udeaevaluarcursos.repository.EvaluacionMateriaRepository;
 import com.udeaevaluarcursos.models.Matricula;
 import com.udeaevaluarcursos.repository.MatriculaRepository;
 import com.udeaevaluarcursos.service.EvaluacionMateriaServiceImpl;
 
+import com.udeaevaluarcursos.service.MateriaServiceImpl;
+import com.udeaevaluarcursos.service.MatriculaServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -26,6 +29,12 @@ public class EvaluacionMateriaController {
     @Autowired
     EvaluacionMateriaRepository evaluacionMateriaRepository;
 
+    @Autowired
+    MatriculaServiceImpl matriculaService;
+    @Autowired
+    MateriaServiceImpl materiaService;
+
+
     @PostMapping("/create-evaluacion-materia")
     public ResponseEntity<EvaluacionMateria> createEvaluacionMateria(@RequestBody EvaluacionMateria evaluacionMateria) {
 
@@ -40,27 +49,36 @@ public class EvaluacionMateriaController {
 
     @PostMapping("/form")
     public ResponseEntity<EvaluacionMateria> createEvaluacion(@RequestBody EvalMateriaRequest evaluacionRequest) {
-        EvaluacionMateria evaluacionMateria = new EvaluacionMateria();
-        evaluacionMateria.setNotaUno(evaluacionRequest.getQ1());
-        evaluacionMateria.setNotaDos(evaluacionRequest.getQ2());
-        evaluacionMateria.setNotaTres(evaluacionRequest.getQ3());
+        try{
+            //Busco la materia con el id que me pasan
+            Materia materia= materiaService.getMateriaById(evaluacionRequest.getId());
+            materia.setEvaluated(true);
 
-        int idMatricula = evaluacionRequest.getId();
-        Optional<Matricula> optionalMatricula = matriculaRepository.findById(idMatricula);
-                //.orElseThrow(() -> new ResourceNotFoundException("Matricula not found with id " + evaluacionRequest.getIdMatricula()));
-        if (optionalMatricula.isPresent()) {
-            Matricula matricula = optionalMatricula.get();
+            //Busco la matricula con el userId que me pasan
+            Matricula matricula = matriculaService.matriculaByEstudiante(evaluacionRequest.getUserId());
             matricula.setCalificado(1);
+
+            //Creo la nueva evaluación materia
+            EvaluacionMateria evaluacionMateria = new EvaluacionMateria();
+            //Seteo el profesor correspondiente a ese objeto materia encontrado con el id
+            evaluacionMateria.setIdProfesor(materia.getProfessor());
+            evaluacionMateria.setNotaUno(evaluacionRequest.getQ1());
+            evaluacionMateria.setNotaDos(evaluacionRequest.getQ2());
+            evaluacionMateria.setNotaTres(evaluacionRequest.getQ3());
+            evaluacionMateria.setIdMateria(materia);
             evaluacionMateria.setIdMatricula(matricula);
-        } else {
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+            evaluacionMateria.setIdMatricula(matricula);
+            evaluacionMateria.setFeedback(evaluacionRequest.getFeedback());
+
+            EvaluacionMateria createdEvaluacion = evaluacionMateriaRepository.save(evaluacionMateria);
+
+            return new ResponseEntity<>( createdEvaluacion,HttpStatus.OK);
+        }catch (Exception e){
+
+            System.out.println(e.getMessage());
+            return new ResponseEntity<>( HttpStatus.BAD_REQUEST);
         }
 
-        evaluacionMateria.setFeedback(evaluacionRequest.getFeedback());
-
-        EvaluacionMateria createdEvaluacion = evaluacionMateriaRepository.save(evaluacionMateria);
-
-        return ResponseEntity.ok(createdEvaluacion);
     }
 
     @GetMapping("/list-evaluaciones-materias")

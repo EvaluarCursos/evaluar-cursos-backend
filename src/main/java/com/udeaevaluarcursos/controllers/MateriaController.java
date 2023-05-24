@@ -1,6 +1,7 @@
 package com.udeaevaluarcursos.controllers;
 
 import com.udeaevaluarcursos.models.Materia;
+import com.udeaevaluarcursos.params.response.CourseByFilter;
 import com.udeaevaluarcursos.service.MateriaServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -28,10 +29,21 @@ public class MateriaController {
         }
     }
 
+    @GetMapping("/{idProfesor}/{semester}/{faculty}")
+    public ResponseEntity<List<CourseByFilter>> listMateriasByFilters(@PathVariable("idProfesor") int idProfessor, @PathVariable("semester") String semester, @PathVariable("faculty") String faculty) {
+        return new ResponseEntity<>(materiaServiceImpl.listMateriasByFilters(idProfessor,semester,faculty), HttpStatus.OK);
+    }
+
     @GetMapping("/list-materias")
     public ResponseEntity<List<Materia>> listMaterias() {
         return new ResponseEntity<>(materiaServiceImpl.listMaterias(), HttpStatus.OK);
     }
+
+    @GetMapping("/list-materias/{id}")
+    public ResponseEntity<List<Materia>> listMateriasByEstudiante(@PathVariable("id") int id) {
+        return new ResponseEntity<>(materiaServiceImpl.listMateriasByIdEstudiante(id), HttpStatus.OK);
+    }
+
 
     @GetMapping("/{id}")
     public ResponseEntity<Materia> getMateriaById(@PathVariable("id") int id) {

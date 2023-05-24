@@ -33,6 +33,16 @@ public class EstudianteServiceImpl implements EstudianteService {
     }
 
     @Override
+    public Estudiante getEstudianteByEmail(String email) {
+        Optional<Estudiante> estudiante= estudianteRepository.findByEmail(email);
+        if (!estudiante.isPresent()) {
+            return null;
+        }
+
+        return estudiante.get();
+    }
+
+    @Override
     public Estudiante createEstudiante(Estudiante estudiante)  {
 
         Optional<Estudiante> estudiantePorCedula= estudianteRepository.findByCedula(estudiante.getCedula());
@@ -71,4 +81,8 @@ public class EstudianteServiceImpl implements EstudianteService {
 
         return estudianteActualizado;
     }
+
+
+
+
 }

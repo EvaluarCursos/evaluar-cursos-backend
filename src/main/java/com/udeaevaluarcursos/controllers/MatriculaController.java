@@ -1,5 +1,6 @@
 package com.udeaevaluarcursos.controllers;
 
+import com.udeaevaluarcursos.models.Estudiante;
 import com.udeaevaluarcursos.models.Matricula;
 
 import com.udeaevaluarcursos.service.MatriculaServiceImpl;
@@ -104,4 +105,19 @@ public class MatriculaController {
             return new ResponseEntity<>(matriculaActualizada, HttpStatus.BAD_REQUEST);
         }
     }
+
+    @GetMapping("/student/{id}")
+    public ResponseEntity<Matricula> matriculaByStudent(@PathVariable("id") int  estudiante) {
+
+        Matricula matriculaEncontrada= matriculaServiceImpl.matriculaByEstudiante(estudiante);
+
+        if (matriculaEncontrada != null) {
+            return new ResponseEntity<>(matriculaEncontrada, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(matriculaEncontrada, HttpStatus.BAD_REQUEST);
+        }
+    }
+
+
+
 }

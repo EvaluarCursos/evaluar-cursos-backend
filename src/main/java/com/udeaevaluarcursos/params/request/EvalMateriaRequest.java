@@ -1,6 +1,16 @@
 package com.udeaevaluarcursos.params.request;
 
 public class EvalMateriaRequest {
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
+
+    private int userId;
     private int q1;
     private int q2;
     private int q3;

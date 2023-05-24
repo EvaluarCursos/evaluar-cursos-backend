@@ -11,5 +11,6 @@ public interface EstudianteRepository extends JpaRepository<Estudiante,Integer>{
     Optional<Estudiante> findByCedula(int cedula);
     Optional<Estudiante> getByIdUsuario_Id(int idUsuario);
 
+    Optional<Estudiante> findByEmail(String email);
     Optional<Estudiante> deleteByCedula(int cedula);
 }

@@ -2,9 +2,12 @@ package com.udeaevaluarcursos.controllers;
 
 import java.util.List;
 
+import com.udeaevaluarcursos.models.Estudiante;
+import com.udeaevaluarcursos.models.Profesor;
 import com.udeaevaluarcursos.models.Usuario;
 import com.udeaevaluarcursos.params.response.UsuarioLogeado;
 import com.udeaevaluarcursos.service.EstudianteServiceImpl;
+import com.udeaevaluarcursos.service.MateriaServiceImpl;
 import com.udeaevaluarcursos.service.ProfesorServiceImpl;
 import com.udeaevaluarcursos.service.UsuarioServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +26,10 @@ public class UsuarioController {
     @Autowired
     EstudianteServiceImpl estudianteServiceImpl;
 
-   /* @GetMapping("/login")
+    @Autowired
+    MateriaServiceImpl materiaService;
+
+    @PostMapping("/login")
     public ResponseEntity<UsuarioLogeado> login(
             @RequestParam(value = "email", required = true) String email,
             @RequestParam(value = "password", required = true) String password
@@ -31,18 +37,24 @@ public class UsuarioController {
         Usuario usuario = usuarioServiceImpl.getUsuarioByEmailAndPassword(email, password);
         if (usuario != null){
             UsuarioLogeado usuarioLogeado = new UsuarioLogeado();
-            if(usuario.getRol() == "Estudiante"){
-                estudianteServiceImpl.getBy()
-                usuarioLogeado.setRol(usuario.getRol());
+            usuarioLogeado.setRol(usuario.getRol());
+            if(usuario.getRol().equals("Estudiante")){
+                Estudiante estudianteEncontrado=estudianteServiceImpl.getEstudianteByEmail(email);
+                usuarioLogeado.setCourses(materiaService.listMateriasByIdEstudiante(estudianteEncontrado.getIdEstudiante()));
+                usuarioLogeado.setUserId(estudianteEncontrado.getIdEstudiante());
+                return new ResponseEntity<>(usuarioLogeado,HttpStatus.OK);
 
-            } else if (usuario.getRol() == "Profesor"){
 
+            } else if (usuario.getRol().equals("Profesor")){
+                Profesor profesorEncontrado=profesorServiceImpl.getProfesorByEmail(email);
+                usuarioLogeado.setUserId(profesorEncontrado.getIdProfesor());
+                return new ResponseEntity<>(usuarioLogeado,HttpStatus.OK);
             }
-        } else {
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-
         }
-    }*/
+        return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+
+
+    }
 
     @PostMapping("/create-usuario")
     public ResponseEntity<Usuario> createUsuario(@RequestBody Usuario usuario) {

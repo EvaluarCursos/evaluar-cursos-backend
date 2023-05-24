@@ -19,9 +19,9 @@ public class Matricula {
     @ManyToMany()
     private List<Materia> idMateria;
 
-    @JoinColumn(name = "idProfesor")
-    @ManyToOne()
-    private Profesor idProfesor;
+
+    @ManyToMany()
+    private List<Profesor> idProfesor;
 
     @Column(name = "semestre", length = 10)
     private String semestre;
@@ -29,12 +29,9 @@ public class Matricula {
     @Column(name = "calificado")
     private int calificado;
 
-    public String getFaculty() {
-        return faculty;
-    }
 
-    @Column(name = "faculty", length = 10)
-    private String faculty;
+
+
 
     public int getCalificado() {
         return calificado;
@@ -68,11 +65,11 @@ public class Matricula {
         this.idMateria = idMateria;
     }
 
-    public Profesor getIdProfesor() {
+    public List<Profesor> getIdProfesor() {
         return idProfesor;
     }
 
-    public void setIdProfesor(Profesor idProfesor) {
+    public void setIdProfesor(List<Profesor> idProfesor) {
         this.idProfesor = idProfesor;
     }
 

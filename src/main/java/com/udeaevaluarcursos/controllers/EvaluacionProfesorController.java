@@ -1,11 +1,13 @@
 package com.udeaevaluarcursos.controllers;
 
-import com.udeaevaluarcursos.models.EvaluacionProfesor;
-import com.udeaevaluarcursos.models.Matricula;
+import com.udeaevaluarcursos.models.*;
 import com.udeaevaluarcursos.params.request.EvalProfesorRequest;
 import com.udeaevaluarcursos.repository.EvaluacionProfesorRepository;
 import com.udeaevaluarcursos.repository.MatriculaRepository;
 import com.udeaevaluarcursos.service.EvaluacionProfesorServiceImpl;
+import com.udeaevaluarcursos.service.MateriaServiceImpl;
+import com.udeaevaluarcursos.service.MatriculaServiceImpl;
+import com.udeaevaluarcursos.service.ProfesorServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -25,31 +27,51 @@ public class EvaluacionProfesorController {
     MatriculaRepository matriculaRepository;
     @Autowired
     EvaluacionProfesorRepository evaluacionProfesorRepository;
+    @Autowired
+    ProfesorServiceImpl profesorService;
+    @Autowired
+    MatriculaServiceImpl matriculaService;
+
+    @Autowired
+    MateriaServiceImpl materiaService;
+
+
     @PostMapping("/form")
     public ResponseEntity<EvaluacionProfesor> createEvaluacion(@RequestBody EvalProfesorRequest evaluacionRequest) {
-        EvaluacionProfesor evaluacionProfesor = new EvaluacionProfesor();
-        evaluacionProfesor.setNotaUno(evaluacionRequest.getQ1());
-        evaluacionProfesor.setNotaDos(evaluacionRequest.getQ2());
-        evaluacionProfesor.setNotaTres(evaluacionRequest.getQ3());
-        evaluacionProfesor.setNotaCuatro(evaluacionRequest.getQ4());
-        evaluacionProfesor.setNotaCinco(evaluacionRequest.getQ5());
-        evaluacionProfesor.setNotaSeis(evaluacionRequest.getQ6());
-        evaluacionProfesor.setNotaSiete(evaluacionRequest.getQ7());
+        try{
 
-        int idMatricula = evaluacionRequest.getId();
-        Optional<Matricula> optionalMatricula = matriculaRepository.findById(idMatricula);
-        if (optionalMatricula.isPresent()) {
-            Matricula matricula = optionalMatricula.get();
+            //Busco la matricula con el userId que me pasan
+            Matricula matricula = matriculaService.matriculaByEstudiante(evaluacionRequest.getUserId());
+            matricula.setCalificado(1);
+
+            //Busco la materia con el id que me pasan
+            Materia materia= materiaService.getMateriaById(evaluacionRequest.getId());
+            materia.setEvaluated(true);
+
+            //Creo la nueva evaluación profesor
+            EvaluacionProfesor evaluacionProfesor = new EvaluacionProfesor();
+            //Seteo el profesor correspondiente a ese objeto materia encontrado con el id
+            evaluacionProfesor.setIdProfesor(materia.getProfessor());
+            evaluacionProfesor.setIdMateria(materia);
+            evaluacionProfesor.setNotaUno(evaluacionRequest.getQ1());
+            evaluacionProfesor.setNotaDos(evaluacionRequest.getQ2());
+            evaluacionProfesor.setNotaTres(evaluacionRequest.getQ3());
+            evaluacionProfesor.setNotaCuatro(evaluacionRequest.getQ4());
+            evaluacionProfesor.setNotaCinco(evaluacionRequest.getQ5());
+            evaluacionProfesor.setNotaSeis(evaluacionRequest.getQ6());
+            evaluacionProfesor.setNotaSiete(evaluacionRequest.getQ7());
             evaluacionProfesor.setIdMatricula(matricula);
-        } else {
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+            evaluacionProfesor.setIdMatricula(matricula);
+            evaluacionProfesor.setFeedback(evaluacionRequest.getFeedback());
+
+            EvaluacionProfesor createdEvaluacion = evaluacionProfesorRepository.save(evaluacionProfesor);
+
+            return new ResponseEntity<>( createdEvaluacion,HttpStatus.OK);
+        }catch (Exception e){
+
+            System.out.println(e.getMessage());
+            return new ResponseEntity<>( HttpStatus.BAD_REQUEST);
         }
-
-        evaluacionProfesor.setFeedback(evaluacionRequest.getFeedback());
-
-        EvaluacionProfesor createdEvaluacion = evaluacionProfesorRepository.save(evaluacionProfesor);
-
-        return ResponseEntity.ok(createdEvaluacion);
     }
 
     @PostMapping("/create-evaluacion-profesor")

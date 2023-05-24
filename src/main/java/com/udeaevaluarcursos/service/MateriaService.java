@@ -1,6 +1,7 @@
 package com.udeaevaluarcursos.service;
 
 import com.udeaevaluarcursos.models.*;
+import com.udeaevaluarcursos.params.response.CourseByFilter;
 
 import java.util.List;
 import java.util.Optional;
@@ -11,4 +12,9 @@ public interface MateriaService {
     public Materia createMateria(Materia materia);
     public Materia deleteMateria(int id);
     public Materia updateMateria(Materia materia);
+
+    public List<Materia> listMateriasByIdEstudiante(int estudiante);
+
+
+    public List<CourseByFilter> listMateriasByFilters(int profesor, String semestre, String facultad);
 }
