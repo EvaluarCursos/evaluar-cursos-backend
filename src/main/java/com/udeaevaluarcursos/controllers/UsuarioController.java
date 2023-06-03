@@ -5,6 +5,7 @@ import java.util.List;
 import com.udeaevaluarcursos.models.Estudiante;
 import com.udeaevaluarcursos.models.Profesor;
 import com.udeaevaluarcursos.models.Usuario;
+import com.udeaevaluarcursos.params.request.Login;
 import com.udeaevaluarcursos.params.response.UsuarioLogeado;
 import com.udeaevaluarcursos.service.EstudianteServiceImpl;
 import com.udeaevaluarcursos.service.MateriaServiceImpl;
@@ -16,6 +17,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+
+@CrossOrigin(origins = "http://localhost:3000")
 @Controller
 @RequestMapping("/usuario")
 public class UsuarioController {
@@ -29,24 +32,23 @@ public class UsuarioController {
     @Autowired
     MateriaServiceImpl materiaService;
 
-    @PostMapping("/login")
+    @PostMapping("/log")
     public ResponseEntity<UsuarioLogeado> login(
-            @RequestParam(value = "email", required = true) String email,
-            @RequestParam(value = "password", required = true) String password
+            @RequestBody Login login
     ) {
-        Usuario usuario = usuarioServiceImpl.getUsuarioByEmailAndPassword(email, password);
+        Usuario usuario = usuarioServiceImpl.getUsuarioByEmailAndPassword(login.getEmail(), login.getPassword());
         if (usuario != null){
             UsuarioLogeado usuarioLogeado = new UsuarioLogeado();
-            usuarioLogeado.setRol(usuario.getRol());
-            if(usuario.getRol().equals("Estudiante")){
-                Estudiante estudianteEncontrado=estudianteServiceImpl.getEstudianteByEmail(email);
+            usuarioLogeado.setRole(usuario.getRol());
+            if(usuario.getRol().equals("student")){
+                Estudiante estudianteEncontrado=estudianteServiceImpl.getEstudianteByEmail(login.getEmail());
                 usuarioLogeado.setCourses(materiaService.listMateriasByIdEstudiante(estudianteEncontrado.getIdEstudiante()));
                 usuarioLogeado.setUserId(estudianteEncontrado.getIdEstudiante());
                 return new ResponseEntity<>(usuarioLogeado,HttpStatus.OK);
 
 
-            } else if (usuario.getRol().equals("Profesor")){
-                Profesor profesorEncontrado=profesorServiceImpl.getProfesorByEmail(email);
+            } else if (usuario.getRol().equals("teacher")){
+                Profesor profesorEncontrado=profesorServiceImpl.getProfesorByEmail(login.getEmail());
                 usuarioLogeado.setUserId(profesorEncontrado.getIdProfesor());
                 return new ResponseEntity<>(usuarioLogeado,HttpStatus.OK);
             }

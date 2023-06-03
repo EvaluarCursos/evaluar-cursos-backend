@@ -18,6 +18,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/evaluacion-profesor")
+@CrossOrigin(origins = "http://localhost:3000")
 public class EvaluacionProfesorController {
 
 

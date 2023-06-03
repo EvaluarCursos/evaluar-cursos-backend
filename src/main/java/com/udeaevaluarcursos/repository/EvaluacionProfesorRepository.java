@@ -10,6 +10,6 @@ public interface EvaluacionProfesorRepository extends JpaRepository<EvaluacionPr
     @Query("select u from EvaluacionProfesor u where u.idProfesor = :profesor and  u.idMateria = :materia")
     EvaluacionProfesor[] findByFilters(Profesor profesor, Materia materia );
 
-    @Query(value = "select u from EvaluacionProfesor u where u.idProfesor.idProfesor = :idProfessor and  u.idMateria.code = :codeMateria")
+    @Query(value = "select u from EvaluacionProfesor u where u.idProfesor.idProfesor = :idProfessor and  u.idMateria.idMateria = :codeMateria")
     EvaluacionProfesor[] findByCode(int idProfessor,int codeMateria);
 }

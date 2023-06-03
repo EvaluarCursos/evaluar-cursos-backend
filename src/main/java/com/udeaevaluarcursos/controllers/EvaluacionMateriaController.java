@@ -1,8 +1,7 @@
 package com.udeaevaluarcursos.controllers;
-import java.util.Optional;
 
 import com.udeaevaluarcursos.models.EvaluacionMateria;
-import com.udeaevaluarcursos.models.EvaluationResponse;
+import com.udeaevaluarcursos.params.response.EvaluationResponse;
 import com.udeaevaluarcursos.models.Materia;
 import com.udeaevaluarcursos.params.request.EvalMateriaRequest;
 import com.udeaevaluarcursos.repository.EvaluacionMateriaRepository;
@@ -20,6 +19,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:3000")
 @RequestMapping("/evaluacion-materia")
 public class EvaluacionMateriaController {
     @Autowired

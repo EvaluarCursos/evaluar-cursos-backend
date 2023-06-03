@@ -5,7 +5,7 @@ import com.udeaevaluarcursos.models.Materia;
 import java.util.List;
 
 public class UsuarioLogeado {
-    private String rol;
+    private String role;
 
     public int getUserId() {
         return userId;
@@ -19,21 +19,17 @@ public class UsuarioLogeado {
 
 
 
-    public void setRol(String rol) {
-        this.rol = rol;
+    public void setRole(String rol) {
+        this.role = rol;
     }
 
-    public void setCedula(int cedula) {
-        this.cedula = cedula;
+
+
+    public String getRole() {
+        return role;
     }
 
-    public String getRol() {
-        return rol;
-    }
 
-    public int getCedula() {
-        return cedula;
-    }
 
     public List<Materia> courses;
 
@@ -45,5 +41,5 @@ public class UsuarioLogeado {
         this.courses = courses;
     }
 
-    private int cedula;
+
 }

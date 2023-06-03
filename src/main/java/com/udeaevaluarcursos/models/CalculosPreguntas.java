@@ -3,8 +3,24 @@ import java.util.ArrayList;
 public class CalculosPreguntas {
 
     private double average = 0;
-    private double desvEst= 0;
-    private double  coefVar= 0;
+    private double desv_est= 0;
+    private double  coef_var= 0;
+
+    public double getDesv_est() {
+        return desv_est;
+    }
+
+    public void setDesv_est(double desv_est) {
+        this.desv_est = desv_est;
+    }
+
+    public double getCoef_var() {
+        return coef_var;
+    }
+
+    public void setCoef_var(double coef_var) {
+        this.coef_var = coef_var;
+    }
 
     public double getAverage() {
         return average;
@@ -14,37 +30,29 @@ public class CalculosPreguntas {
         this.average = average;
     }
 
-    public double getDesvEst() {
-        return desvEst;
-    }
 
-    public void setDesvEst(double desvEst) {
-        this.desvEst = desvEst;
-    }
 
-    public double getCoefVar() {
-        return coefVar;
-    }
 
-    public void setCoefVar(double coefVar) {
-        this.coefVar = coefVar;
-    }
-
-    public int getTotal() {
-        return total;
-    }
-
-    public void setTotal(int total) {
-        this.total = total;
-    }
 
     private int total=0;
 
+    private int answers=0;
+
+    public int getAnswers() {
+        return answers;
+    }
+
+    public void setAswers(int aswers) {
+        this.answers = aswers;
+    }
+
     private ArrayList<Integer> notas= new ArrayList<>();
 
-    public ArrayList<Integer> getNotas() {
-        return notas;
+    public void addNota(int nota) {
+         this.notas.add(nota);
     }
+
+
 
     public void estadisticas(int length){
         calculateAverage(length);
@@ -78,9 +86,9 @@ public class CalculosPreguntas {
         if (length >1){
             double varianza = sumCuadradosDiff / (length - 1);
             double desviacionEstandar = Math.sqrt(varianza);
-            this.desvEst=desviacionEstandar;
+            this.desv_est=desviacionEstandar;
         }else{
-            this.desvEst=0;
+            this.desv_est=0;
         }
 
 
@@ -91,8 +99,8 @@ public class CalculosPreguntas {
     }
 
     public void calculateCoefVar(){
-        double coefficientOfVariation = (this.desvEst / this.average) * 100;
-        this.coefVar=coefficientOfVariation;
+        double coefficientOfVariation = (this.desv_est / this.average) * 100;
+        this.coef_var=coefficientOfVariation;
 
     }
 

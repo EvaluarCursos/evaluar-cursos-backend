@@ -1,12 +1,11 @@
 package com.udeaevaluarcursos.service;
 
 import com.udeaevaluarcursos.models.*;
+import com.udeaevaluarcursos.params.response.EvaluationResponse;
 import com.udeaevaluarcursos.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.lang.reflect.Array;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
 
@@ -68,7 +67,7 @@ public class EvaluacionMateriaServiceImpl implements EvaluacionMateriaService{
     }
 
     @Override
-    public  EvaluationResponse getInformeByIdMateria(int idProfesor, int idMateria) {
+    public EvaluationResponse getInformeByIdMateria(int idProfesor, int idMateria) {
         //Optional<Materia> materiaFiltrar=materiaRepository.findById(idMateria);
         //Optional<Profesor> profesorFiltrar=profesorRepository.findById(idProfesor);
 
@@ -84,21 +83,36 @@ public class EvaluacionMateriaServiceImpl implements EvaluacionMateriaService{
 
             for (int i=0;i<evaluacionesMateriasPorFiltros.length;i++){
                 EvaluacionMateria evaluacionMateria=evaluacionesMateriasPorFiltros[i];
-                preguntasEvaluaciones.getQ1().getNotas().add(evaluacionMateria.getNotaUno());
-                preguntasEvaluaciones.getQ2().getNotas().add(evaluacionMateria.getNotaDos());
-                preguntasEvaluaciones.getQ3().getNotas().add(evaluacionMateria.getNotaTres());
+                preguntasEvaluaciones.getQ1().addNota(evaluacionMateria.getNotaUno());
+                preguntasEvaluaciones.getQ2().addNota(evaluacionMateria.getNotaDos());
+                preguntasEvaluaciones.getQ3().addNota(evaluacionMateria.getNotaTres());
+                preguntasEvaluaciones.getQ1().setAswers(evaluacionesMateriasPorFiltros.length);
+                preguntasEvaluaciones.getQ2().setAswers(evaluacionesMateriasPorFiltros.length);
+                preguntasEvaluaciones.getQ3().setAswers(evaluacionesMateriasPorFiltros.length);
 
             }
 
+
             for (int i=0;i<evaluacionesProfesorPorFiltros.length;i++){
                 EvaluacionProfesor evaluacionProfesor=evaluacionesProfesorPorFiltros[i];
-                preguntasEvaluaciones.getQ4().getNotas().add(evaluacionProfesor.getNotaUno());
-                preguntasEvaluaciones.getQ5().getNotas().add(evaluacionProfesor.getNotaDos());
-                preguntasEvaluaciones.getQ6().getNotas().add(evaluacionProfesor.getNotaTres());
-                preguntasEvaluaciones.getQ7().getNotas().add(evaluacionProfesor.getNotaCuatro());
-                preguntasEvaluaciones.getQ8().getNotas().add(evaluacionProfesor.getNotaCinco());
-                preguntasEvaluaciones.getQ9().getNotas().add(evaluacionProfesor.getNotaSeis());
-                preguntasEvaluaciones.getQ10().getNotas().add(evaluacionProfesor.getNotaSiete());
+                preguntasEvaluaciones.getQ4().addNota(evaluacionProfesor.getNotaUno());
+                preguntasEvaluaciones.getQ5().addNota(evaluacionProfesor.getNotaDos());
+                preguntasEvaluaciones.getQ6().addNota(evaluacionProfesor.getNotaTres());
+                preguntasEvaluaciones.getQ7().addNota(evaluacionProfesor.getNotaCuatro());
+                preguntasEvaluaciones.getQ8().addNota(evaluacionProfesor.getNotaCinco());
+                preguntasEvaluaciones.getQ9().addNota(evaluacionProfesor.getNotaSeis());
+                preguntasEvaluaciones.getQ10().addNota(evaluacionProfesor.getNotaSiete());
+
+
+                preguntasEvaluaciones.getQ4().setAswers(evaluacionesProfesorPorFiltros.length);
+                preguntasEvaluaciones.getQ5().setAswers(evaluacionesProfesorPorFiltros.length);
+                preguntasEvaluaciones.getQ6().setAswers(evaluacionesProfesorPorFiltros.length);
+                preguntasEvaluaciones.getQ7().setAswers(evaluacionesProfesorPorFiltros.length);
+                preguntasEvaluaciones.getQ8().setAswers(evaluacionesProfesorPorFiltros.length);
+                preguntasEvaluaciones.getQ9().setAswers(evaluacionesProfesorPorFiltros.length);
+                preguntasEvaluaciones.getQ10().setAswers(evaluacionesProfesorPorFiltros.length);
+
+
             }
 
 
@@ -106,6 +120,7 @@ public class EvaluacionMateriaServiceImpl implements EvaluacionMateriaService{
                 preguntasEvaluaciones.getQ1().estadisticas(evaluacionesMateriasPorFiltros.length);
                 preguntasEvaluaciones.getQ2().estadisticas(evaluacionesMateriasPorFiltros.length);
                 preguntasEvaluaciones.getQ3().estadisticas(evaluacionesMateriasPorFiltros.length);
+
             }
 
             if(evaluacionesProfesorPorFiltros.length > 0){
@@ -131,6 +146,8 @@ public class EvaluacionMateriaServiceImpl implements EvaluacionMateriaService{
             evaluationResponse.seccion6.put("q8", preguntasEvaluaciones.getQ8());
             evaluationResponse.seccion6.put("q9", preguntasEvaluaciones.getQ9());
             evaluationResponse.seccion6.put("q10", preguntasEvaluaciones.getQ10());
+
+
 
             return evaluationResponse;
 

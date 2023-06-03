@@ -11,7 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping("/profesor-materia")
 public class ProfesorMateriaController {
@@ -36,8 +36,8 @@ public class ProfesorMateriaController {
         return new ResponseEntity<>(profesorMateriaService.listProfesorMateria(), HttpStatus.OK);
     }
 
-    @GetMapping("/list-profesor-materia/{idProfesor}/{semester}/{faculty}")
-    public ResponseEntity<List<ProfesorMateria>> listProfesoresByFilters(@PathVariable("idProfesor") int idProfessor,@PathVariable("semester") String semester,@PathVariable("faculty") String faculty) {
+    @GetMapping("/list-profesor-materia-filters/{userId}")
+    public ResponseEntity<List<ProfesorMateria>> listProfesoresByFilters(@PathVariable ("userId") int idProfessor,@RequestParam ("semester") String semester,@RequestParam ("faculty") String faculty) {
         return new ResponseEntity<>(profesorMateriaService.listProfesorMateriaByFilters(idProfessor,semester,faculty), HttpStatus.OK);
     }
 

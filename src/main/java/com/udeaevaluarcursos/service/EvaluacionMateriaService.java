@@ -1,12 +1,9 @@
 package com.udeaevaluarcursos.service;
 
 import com.udeaevaluarcursos.models.EvaluacionMateria;
-import com.udeaevaluarcursos.models.EvaluacionProfesor;
-import com.udeaevaluarcursos.models.EvaluationResponse;
-import com.udeaevaluarcursos.models.PreguntasEvaluaciones;
+import com.udeaevaluarcursos.params.response.EvaluationResponse;
 
 import java.util.List;
-import java.util.Optional;
 
 public interface EvaluacionMateriaService {
     public List<EvaluacionMateria> listEvaluacionesMaterias();

@@ -14,6 +14,7 @@ import com.udeaevaluarcursos.params.response.CoursesPerTeacher;
 
 import java.util.List;
 @RestController
+@CrossOrigin(origins = "http://localhost:3000")
 @RequestMapping("/matricula")
 public class MatriculaController {
     @Autowired

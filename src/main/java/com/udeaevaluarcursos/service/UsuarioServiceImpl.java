@@ -35,8 +35,11 @@ public class UsuarioServiceImpl implements UsuarioService {
             return null;
         }
 
+
         return usuario.get();
     }
+
+
 
     @Override
     public Usuario createUsuario(Usuario usuario){

@@ -1,8 +1,12 @@
 package com.udeaevaluarcursos.controllers;
 
 import com.udeaevaluarcursos.models.Materia;
+import com.udeaevaluarcursos.models.ProfesorMateria;
 import com.udeaevaluarcursos.params.response.CourseByFilter;
+import com.udeaevaluarcursos.params.response.EvaluationResponse;
+import com.udeaevaluarcursos.service.EvaluacionMateriaServiceImpl;
 import com.udeaevaluarcursos.service.MateriaServiceImpl;
+import com.udeaevaluarcursos.service.ProfesorMateriaServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,11 +15,19 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/materia")
+@CrossOrigin(origins = "http://localhost:3000")
+@RequestMapping("/courses")
 public class MateriaController {
 
     @Autowired
     MateriaServiceImpl materiaServiceImpl;
+
+    @Autowired
+    ProfesorMateriaServiceImpl profesorMateriaService;
+
+    @Autowired
+    EvaluacionMateriaServiceImpl evaluacionMateriaServiceImpl;
+
 
     @PostMapping("/create-materia")
     public ResponseEntity<Materia> createMateria(@RequestBody Materia materia) {
@@ -29,8 +41,8 @@ public class MateriaController {
         }
     }
 
-    @GetMapping("/{idProfesor}/{semester}/{faculty}")
-    public ResponseEntity<List<CourseByFilter>> listMateriasByFilters(@PathVariable("idProfesor") int idProfessor, @PathVariable("semester") String semester, @PathVariable("faculty") String faculty) {
+    @GetMapping("/{userId}/")
+    public ResponseEntity<List<CourseByFilter>> listMateriasByFilters(@PathVariable ("userId") int idProfessor, @RequestParam ("semester") String semester, @RequestParam ("faculty") String faculty) {
         return new ResponseEntity<>(materiaServiceImpl.listMateriasByFilters(idProfessor,semester,faculty), HttpStatus.OK);
     }
 
@@ -80,4 +92,17 @@ public class MateriaController {
             return new ResponseEntity<>(materiaActualizada, HttpStatus.BAD_REQUEST);
         }
     }
+
+    @GetMapping("/{idProfesor}/{idMateria}")
+    public ResponseEntity<EvaluationResponse> getInformeByIdMateria(@PathVariable("idProfesor") int idProfesor , @PathVariable("idMateria") int idMateria){
+
+        EvaluationResponse evaluacionMateria=evaluacionMateriaServiceImpl.getInformeByIdMateria(idProfesor,idMateria);
+
+
+        return new ResponseEntity<>(evaluacionMateria, HttpStatus.OK);
+
+
+    }
+
+
 }
